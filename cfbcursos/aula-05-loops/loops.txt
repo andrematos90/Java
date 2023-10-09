@@ -1,0 +1,54 @@
+Em Java, existem três tipos principais de loops para controle de fluxo de repetição: o for, o while e o do-while. Cada um desses loops tem suas próprias características e é adequado para diferentes cenários.
+
+Loop for:
+O loop for é frequentemente usado quando você sabe exatamente quantas vezes deseja repetir um bloco de código. Possui a seguinte estrutura:
+
+
+for (inicialização; condição; incremento) {
+    // Código a ser repetido
+}
+inicialização: Inicializa uma variável de controle do loop.
+condição: Define a condição que deve ser verdadeira para continuar no loop.
+incremento: Atualiza a variável de controle do loop em cada iteração.
+
+Exemplo:
+
+for (int i = 0; i < 5; i++) {
+    System.out.println("Iteração " + i);
+}
+
+Loop while:
+O loop while é usado quando você não sabe antecipadamente quantas vezes um bloco de código será executado. Ele continua a repetir enquanto a condição especificada for verdadeira. Sua estrutura é a seguinte:
+
+
+while (condição) {
+    // Código a ser repetido
+}
+
+Exemplo:
+
+
+int i = 0;
+while (i < 5) {
+    System.out.println("Iteração " + i);
+    i++;
+}
+
+Loop do-while:
+O loop do-while é semelhante ao while, mas garante que o bloco de código seja executado pelo menos uma vez, pois a condição é verificada após a primeira execução. A estrutura é a seguinte:
+
+
+do {
+    // Código a ser repetido
+} while (condição);
+
+Exemplo:
+
+
+int i = 0;
+do {
+    System.out.println("Iteração " + i);
+    i++;
+} while (i < 5);
+
+Esses são os três tipos principais de loops em Java. A escolha do loop a ser usado depende da situação e dos requisitos do seu programa. O loop for é adequado quando você sabe o número de iterações antecipadamente, o while é útil quando a condição de repetição é desconhecida no início, e o do-while garante pelo menos uma execução do bloco de código.
