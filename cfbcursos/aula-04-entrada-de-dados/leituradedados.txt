@@ -1,0 +1,40 @@
+Para fazer a leitura de dados do teclado em Java, você pode usar a classe Scanner que faz parte do pacote java.util. Aqui está um exemplo simples de como ler dados do teclado em Java:
+
+import java.util.Scanner;
+
+public class LeituraDoTeclado {
+    public static void main(String[] args) {
+        // Crie um objeto Scanner para ler a entrada do teclado
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Digite algo: ");
+        
+        // Use o método next() para ler uma única palavra (até o espaço em branco)
+        String palavra = scanner.next();
+        System.out.println("Você digitou: " + palavra);
+
+        // Use o método nextLine() para ler uma linha completa
+        System.out.print("Digite uma linha: ");
+        String linha = scanner.nextLine();
+        System.out.println("Você digitou: " + linha);
+
+        // Lembre-se de fechar o Scanner quando você terminar de usá-lo
+        scanner.close();
+    }
+}
+Neste exemplo, primeiro criamos um objeto Scanner que lê a entrada do teclado (System.in). Em seguida, usamos os métodos next() e nextLine() para ler palavras e linhas, respectivamente, da entrada do teclado.
+
+Lembre-se de importar a classe Scanner e fechar o objeto Scanner quando não for mais necessário para evitar vazamentos de recursos.
+
+Este é um exemplo simples, e você pode personalizá-lo de acordo com as necessidades do seu programa. O Scanner oferece métodos para ler diferentes tipos de dados, como números inteiros, números de ponto flutuante e assim por diante.
+
+O parâmetro System.in é passado ao criar um objeto Scanner para indicar de onde o Scanner deve ler os dados. Em Java, System.in é uma instância de InputStream que representa a entrada padrão do sistema, ou seja, o teclado. É um fluxo de entrada que permite a leitura de dados que são inseridos pelo usuário no console.
+
+Quando você passa System.in como parâmetro ao criar um objeto Scanner, você está configurando o Scanner para ler os dados que o usuário insere no console, tornando-o uma forma conveniente de obter entrada do teclado.
+
+Aqui está a linha em questão:
+
+Scanner scanner = new Scanner(System.in);
+
+Isso cria um objeto Scanner que lê os dados da entrada padrão, ou seja, o teclado. A partir desse ponto, você pode usar métodos como next(), nextLine(), nextInt(), entre outros, para ler os dados que o usuário insere no console.
+Em resumo, você está passando o objeto System.in como um parâmetro para o construtor do Scanner para configurá-lo para ler dados do teclado. Isso é uma maneira de obter entrada do usuário no seu programa Java.
