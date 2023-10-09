@@ -77,3 +77,67 @@ Gerenciamento de Memória e Coleta de Lixo: A JVM também cuida da alocação de
 Fechamento do Programa: Quando o programa Java é concluído, a JVM libera os recursos usados pelo programa e encerra sua execução.
 
 Em resumo, o bytecode é uma representação intermediária de código que permite que os programas Java sejam portáteis, sendo executados em diferentes plataformas graças à Máquina Virtual Java (JVM). A JVM é responsável por interpretar ou compilar o bytecode, executar o programa, garantir a segurança, gerenciar memória e coletar lixo, tornando o desenvolvimento Java mais eficiente e versátil.
+
+
+
+CONVENÇÕES
+
+Em Java, existem convenções amplamente aceitas para nomeação de projetos, classes e variáveis. Seguir essas convenções ajuda a tornar seu código mais legível e compreensível para outros desenvolvedores. Aqui estão algumas diretrizes comuns:
+
+1. Nomes de Projetos:
+
+Os nomes de projetos (ou diretórios) geralmente seguem uma convenção de todas as letras minúsculas e não contêm espaços. Palavras múltiplas são separadas por underscores (_) ou hífens (-).
+Exemplo:
+
+meuprojeto
+meu_projeto
+meu-projeto
+
+2. Nomes de Pacotes:
+
+Os nomes de pacotes geralmente seguem a mesma convenção de nomes de diretórios. Eles também devem estar em letras minúsculas e podem usar underscores ou hífens.
+
+3. Nomes de Classes:
+
+Os nomes de classes começam com uma letra maiúscula.
+Usam CamelCase, onde a primeira letra de cada palavra é maiúscula e sem espaços entre as palavras.
+Evite caracteres especiais ou números no nome da classe (a menos que seja necessário).
+
+Exemplo:
+
+MinhaClasse
+MinhaClasseUtil
+
+
+4. Nomes de Variáveis:
+
+As variáveis em Java geralmente seguem uma convenção de nomes em minúsculas.
+Para variáveis compostas por várias palavras, use CamelCase.
+Para constantes, use letras maiúsculas com palavras separadas por underscores (conhecido como notação SNAKE_CASE).
+Exemplos:
+
+
+int minhaVariavel;
+String nomeCompleto;
+final int VALOR_MAXIMO = 100;
+
+
+5. Nomes de Métodos:
+
+Os nomes de métodos também seguem a convenção CamelCase, começando com letra minúscula.
+
+Use nomes descritivos para métodos que indiquem sua função.
+Exemplos:
+
+public void calcularValorTotal();
+public String obterNomeCompleto();
+
+
+6. Nomes de Constantes:
+
+As constantes são escritas em letras maiúsculas com palavras separadas por underscores.
+Exemplo:
+
+public static final int TAMANHO_MAXIMO = 100;
+
+É importante observar que essas são diretrizes e convenções amplamente aceitas, mas não são estritamente obrigatórias. No entanto, seguir essas convenções tornará seu código mais legível e alinhado com as práticas comuns da comunidade Java.

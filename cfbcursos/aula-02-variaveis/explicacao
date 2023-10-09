@@ -1,0 +1,35 @@
+Em Java, você pode declarar variáveis usando a seguinte sintaxe:
+
+tipoDaVariavel nomeDaVariavel;
+
+Aqui estão alguns exemplos de como declarar variáveis em Java:
+
+Declaração de uma variável inteira:
+int idade;
+
+Declaração de uma variável de ponto flutuante (número decimal):
+double preco;
+
+Declaração de uma variável de texto (String):
+String nome;
+
+Declaração de uma variável booleana (verdadeiro ou falso):
+boolean estaChovendo;
+
+Declaração de uma variável de um tipo personalizado (por exemplo, uma classe que você tenha definido):
+MinhaClasse minhaInstancia;
+
+Após a declaração, você pode atribuir um valor à variável. Por exemplo:
+
+
+idade = 25;
+preco = 19.99;
+nome = "João";
+estaChovendo = true;
+
+Você também pode declarar e inicializar uma variável em uma única linha:
+
+int numero = 42;
+String mensagem = "Olá, mundo!";
+
+Lembre-se de que, em Java, as variáveis têm um tipo de dado associado a elas, e você deve declarar o tipo da variável antes de usá-la. Além disso, as variáveis devem ser declaradas antes de serem utilizadas em um programa.
