@@ -1,0 +1,21 @@
+Em Java, os arrays são estruturas de dados que armazenam elementos de um tipo específico em uma sequência ordenada. Embora os arrays em Java sejam objetos, eles têm um conjunto limitado de métodos e funcionalidades associados a eles. Aqui estão alguns dos métodos e propriedades mais comuns associados a arrays em Java:
+
+length: Propriedade que retorna o número de elementos no array. Exemplo: int length = array.length;.
+
+clone(): Método que cria uma cópia rasa do array. A cópia terá as mesmas referências aos objetos que o array original, ou seja, não é uma cópia profunda.
+
+equals(): Método que compara se dois arrays têm os mesmos elementos. Retorna true se os elementos forem iguais.
+
+fill(): Método que preenche todos os elementos do array com um valor específico. Por exemplo, Arrays.fill(array, 0) preencherá todos os elementos com 0.
+
+sort(): Método que classifica os elementos do array em ordem crescente. Para isso, os elementos devem ser comparáveis ou você pode fornecer um comparador personalizado.
+
+binarySearch(): Método que realiza uma pesquisa binária em um array classificado para encontrar um elemento específico. Retorna o índice do elemento ou um valor negativo se o elemento não for encontrado.
+
+copyOf(): Método que cria uma cópia do array com um tamanho especificado. Se o novo tamanho for maior, ele preencherá os elementos adicionais com valores padrão.
+
+asList(): Método que converte um array em uma lista do tipo List. Isso pode ser útil para usar métodos da interface List.
+
+toString(): Método que retorna uma representação em string do array. Por padrão, isso é uma representação dos elementos, mas você pode personalizá-lo para atender às suas necessidades.
+
+Lembre-se de que esses métodos estão disponíveis na classe java.util.Arrays e não são métodos de instância de arrays. Você os chama usando a classe Arrays, como em Arrays.sort(array) ou Arrays.copyOf(array, newSize).
