@@ -1,0 +1,50 @@
+Em Java, uma classe é uma estrutura fundamental que é usada para definir objetos. As classes são a base da programação orientada a objetos (POO) e são usadas para criar objetos, que são instâncias de uma classe. Aqui estão os conceitos-chave relacionados a classes em Java:
+
+Definição de Classe:
+Uma classe em Java é uma estrutura que define um tipo de objeto. Ela serve como um modelo ou um plano para criar objetos. A definição de uma classe inclui variáveis de instância (também chamadas de campos) e métodos que operam nesses campos.
+
+Objetos:
+Um objeto é uma instância de uma classe. É uma entidade que possui estado (variáveis de instância) e comportamento (métodos). Cada objeto criado a partir de uma classe compartilha as mesmas características, mas pode ter valores diferentes para suas variáveis de instância.
+
+Variáveis de Instância:
+Variáveis de instância são os atributos ou campos que pertencem a cada objeto criado a partir de uma classe. Elas representam o estado do objeto e podem ter diferentes valores para cada instância da classe.
+
+Métodos:
+Métodos são funções ou procedimentos que pertencem a uma classe e são usados para realizar ações ou operações nos objetos da classe. Eles podem acessar as variáveis de instância da classe e, em alguns casos, podem retornar valores.
+
+Encapsulamento:
+O encapsulamento é um princípio da POO que envolve a proteção dos detalhes internos de uma classe, como suas variáveis de instância, tornando-as privadas e fornecendo métodos públicos (getters e setters) para acessá-las e modificá-las. Isso ajuda a controlar o acesso aos dados e manter a integridade do objeto.
+
+Herança:
+A herança permite que uma classe (subclasse) herde atributos e métodos de outra classe (superclasse). Isso promove a reutilização de código e cria uma hierarquia de classes.
+
+Polimorfismo:
+O polimorfismo permite que objetos de diferentes classes sejam tratados de maneira uniforme, usando uma interface comum. Isso é alcançado por meio de herança e interfaces.
+
+Construtores:
+Um construtor é um método especial de uma classe usado para inicializar objetos. Ele é chamado no momento da criação de um objeto e é usado para atribuir valores iniciais às variáveis de instância.
+
+Aqui está um exemplo simples de uma classe em Java:
+
+public class Pessoa {
+    // Variáveis de instância
+    private String nome;
+    private int idade;
+
+    // Construtor
+    public Pessoa(String nome, int idade) {
+        this.nome = nome;
+        this.idade = idade;
+    }
+
+    // Métodos
+    public String getNome() {
+        return nome;
+    }
+
+    public int getIdade() {
+        return idade;
+    }
+}
+
+Neste exemplo, a classe Pessoa tem variáveis de instância nome e idade, um construtor que inicializa essas variáveis e métodos getNome() e getIdade() para acessar esses valores. Você pode criar objetos Pessoa a partir dessa classe para representar indivíduos com nomes e idades específicos.
