@@ -1,0 +1,41 @@
+Em Java, você pode usar modificadores de acesso para controlar a visibilidade e o alcance dos atributos de uma classe. Existem quatro tipos principais de modificadores que podem ser aplicados aos atributos de classe:
+
+public: Os atributos marcados como public são acessíveis de qualquer lugar, ou seja, de qualquer classe. Eles não têm restrições de acesso e podem ser acessados de fora da classe onde estão definidos. Por exemplo:
+
+public class Exemplo {
+    public int numero; // Atributo público
+}
+
+private: Os atributos marcados como private são acessíveis somente dentro da classe em que foram definidos. Eles não podem ser acessados diretamente de fora da classe. Para acessar ou modificar esses atributos, você geralmente usa métodos públicos, como getters e setters. Por exemplo:
+
+public class Exemplo {
+    private int numero; // Atributo privado
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+}
+
+protected: Atributos marcados como protected são acessíveis dentro da classe, em subclasses (herança) e no mesmo pacote. Isso significa que eles não podem ser acessados de fora do pacote se não houver herança. Por exemplo:
+
+public class Exemplo {
+    protected int numero; // Atributo protegido
+}
+
+default (sem modificador): Se um atributo não tiver um modificador de acesso especificado, ele será considerado como tendo acesso de pacote (também chamado de "amigável"). Isso significa que o atributo é acessível apenas por classes dentro do mesmo pacote. Por exemplo:
+
+class Exemplo {
+    int numero; // Atributo com acesso de pacote
+}
+
+Aqui está um resumo das regras de acesso para os diferentes modificadores de atributos:
+
+public: Acesso de qualquer lugar.
+private: Acesso somente dentro da classe.
+protected: Acesso dentro da classe, em subclasses e no mesmo pacote.
+Sem modificador (default): Acesso no mesmo pacote.
+A escolha do modificador depende dos requisitos de visibilidade e encapsulamento do seu código. É uma boa prática manter os atributos como private e fornecer métodos públicos (getters e setters) para acessá-los, pois isso ajuda a encapsular o estado do objeto e controlar o acesso a ele.
