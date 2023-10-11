@@ -1,0 +1,38 @@
+Os métodos get e set, comumente conhecidos como "getters" e "setters", são métodos usados em Java para acessar e modificar os atributos de uma classe. Eles desempenham um papel fundamental em garantir o encapsulamento dos atributos e o controle do acesso a eles. Aqui está uma explicação detalhada sobre esses métodos:
+
+Getter (Método de Acesso):
+
+Um método get é usado para acessar o valor de um atributo privado de uma classe.
+É uma prática comum nomear os métodos get de acordo com o nome do atributo que eles acessam. Por exemplo, se você tem um atributo privado chamado idade, o método get correspondente pode ser chamado de getIdade.
+O método get geralmente não recebe argumentos, pois seu objetivo é apenas retornar o valor do atributo.
+Os métodos get são públicos, para que possam ser chamados de fora da classe para recuperar informações do objeto.
+Exemplo:
+
+public class Pessoa {
+    private int idade; // Atributo privado
+
+    // Getter para o atributo "idade"
+    public int getIdade() {
+        return idade;
+    }
+}
+Setter (Método de Modificação):
+
+Um método set é usado para modificar o valor de um atributo privado de uma classe.
+Os métodos set geralmente têm um parâmetro que representa o novo valor que você deseja atribuir ao atributo.
+Os métodos set são públicos, para que possam ser chamados de fora da classe para atualizar o valor do atributo.
+Os métodos set frequentemente incluem lógica de validação para garantir que os novos valores atendam a determinados critérios antes de serem atribuídos ao atributo.
+Exemplo:
+
+public class Pessoa {
+    private int idade; // Atributo privado
+
+    // Setter para o atributo "idade" com validação
+    public void setIdade(int novaIdade) {
+        if (novaIdade >= 0) { // Validando se a idade é não negativa
+            idade = novaIdade;
+        }
+    }
+}
+
+O uso de getters e setters é uma prática recomendada na programação orientada a objetos porque permite que você controle o acesso aos atributos da classe, o que é conhecido como encapsulamento. Isso ajuda a manter a integridade dos dados e permite que você adicione lógica adicional (como validações) sempre que necessário, sem afetar o código que usa a classe. Além disso, facilita a evolução da classe, pois você pode fazer alterações internas sem afetar o código externo que a utiliza.
