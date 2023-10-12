@@ -1,0 +1,48 @@
+A herança é um dos conceitos fundamentais da programação orientada a objetos (POO) e desempenha um papel importante em linguagens como Java. Ela permite a criação de uma nova classe (subclasse ou classe derivada) que herda características (atributos e métodos) de uma classe existente (superclasse ou classe base). Em Java, a herança é realizada usando a palavra-chave extends. Aqui estão alguns conceitos-chave relacionados à herança em Java:
+
+Superclasse e Subclasse:
+
+Superclasse (Classe Base): É a classe existente da qual outras classes derivadas herdam. A superclasse fornece os atributos e métodos que podem ser compartilhados pelas subclasses.
+Subclasse (Classe Derivada): É a nova classe que herda características da superclasse. Ela pode adicionar novos atributos e métodos ou modificar os existentes.
+Exemplo de Declaração de Herança:
+
+public class Superclasse {
+    // Atributos e métodos da superclasse
+}
+
+public class Subclasse extends Superclasse {
+    // Atributos e métodos da subclasse
+}
+
+
+Herança de Atributos e Métodos:
+
+As subclasses herdam todos os atributos e métodos públicos ou protegidos da superclasse.
+As subclasses podem acessar os membros herdados usando super, e podem adicionar novos atributos e métodos, substituir métodos existentes (sobrescrita) e até chamar o construtor da superclasse usando super().
+
+
+Método de Sobrescrita (Override):
+
+Uma subclasse pode fornecer uma implementação diferente de um método que já existe na superclasse. Isso é chamado de sobrescrita de método.
+
+Para sobrescrever um método, o método na subclasse deve ter a mesma assinatura (nome, tipo de retorno, número e tipo de parâmetros) que o método na superclasse.
+
+public class Superclasse {
+    public void metodo() {
+        // Implementação na superclasse
+    }
+}
+
+public class Subclasse extends Superclasse {
+    @Override
+    public void metodo() {
+        // Implementação diferente na subclasse
+    }
+}
+
+
+Herança Múltipla: Java suporta apenas herança simples, o que significa que uma classe só pode herdar de uma única superclasse. No entanto, uma classe pode implementar múltiplas interfaces, o que permite alcançar funcionalidades semelhantes à herança múltipla.
+
+Modificadores de Acesso: Os modificadores de acesso, como public, private, protected e default, têm um papel importante na herança. Eles determinam como os membros da superclasse são herdados e acessados nas subclasses.
+
+A herança é um conceito poderoso que promove a reutilização de código e ajuda a criar uma hierarquia de classes bem organizada. No entanto, deve ser usado com cuidado para evitar hierarquias excessivamente complexas, e o princípio da substituição (polimorfismo) deve ser observado para garantir um design orientado a objetos sólido e eficaz.
