@@ -14,4 +14,6 @@ public class  CarroCombate extends Carro{
     public void setQtArmamento(int qtArmamento){
         this.qtArmamento = qtArmamento;
     }
+
+   
 }
