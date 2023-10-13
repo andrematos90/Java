@@ -1,0 +1,43 @@
+Em Java, o conceito de superclasse e subclasse faz parte da herança, que é um dos pilares da programação orientada a objetos. A herança permite que você crie novas classes com base em classes existentes, reutilizando o código e estabelecendo uma relação entre essas classes. A classe da qual uma subclasse é derivada é chamada de superclasse, enquanto a classe derivada é a subclasse.
+
+Aqui está uma explicação mais detalhada:
+
+Superclasse (Classe Base ou Classe Pai):
+
+Uma superclasse é uma classe existente que serve como modelo ou ponto de partida para criar outras classes.
+Ela contém atributos e métodos que podem ser compartilhados por suas subclasses.
+As superclasses geralmente são mais genéricas e abstratas, definindo características comuns a várias subclasses.
+
+
+
+
+Subclasse (Classe Derivada ou Classe Filha):
+
+Uma subclasse é uma classe que é derivada de uma superclasse.
+Ela herda atributos e métodos da superclasse e também pode adicionar novos atributos e métodos ou modificar os existentes.
+As subclasses são mais específicas e especializadas, refinando ou estendendo o comportamento da superclasse.
+A relação entre superclasse e subclasse é estabelecida usando a palavra-chave extends em Java. Por exemplo:
+
+
+class Animal { // Superclasse
+    String nome;
+    
+    public void emitirSom() {
+        System.out.println("Animal fazendo barulho");
+    }
+}
+
+class Cachorro extends Animal { // Subclasse
+    public void emitirSom() {
+        System.out.println("Cachorro latindo");
+    }
+
+    public void abanarRabo() {
+        System.out.println("Cachorro abanando o rabo");
+    }
+}
+
+
+Neste exemplo, Animal é a superclasse e Cachorro é a subclasse. A subclasse herda o atributo nome e o método emitirSom da superclasse, mas também adiciona seu próprio método abanarRabo. Isso demonstra como a herança permite a reutilização de código e a extensão de funcionalidades em Java.
+
+Lembre-se de que uma classe Java pode estender apenas uma superclasse (herança simples), mas pode implementar várias interfaces (herança múltipla por meio de interfaces).
