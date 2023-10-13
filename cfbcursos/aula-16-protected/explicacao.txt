@@ -1,0 +1,64 @@
+O modificador de acesso protected em Java é uma das quatro opções de modificadores de acesso que permitem controlar a visibilidade de membros (atributos e métodos) de uma classe em relação a outras classes. O modificador protected fornece um nível intermediário de visibilidade entre as classes no mesmo pacote e as subclasses (herdeiras) em qualquer pacote.
+
+Aqui estão as principais características do modificador protected:
+
+Acesso dentro da mesma classe: Membros declarados como protected podem ser acessados a partir de qualquer lugar dentro da mesma classe onde eles são definidos. Isso inclui a própria classe e qualquer outra classe que esteja no mesmo pacote.
+
+Acesso em subclasses: Além de ser acessível na classe onde é definido, um membro protected também pode ser acessado em subclasses (classes que herdam da classe onde o membro é definido) em qualquer pacote.
+
+Não acessível a partir de classes não relacionadas: Membros protected não podem ser acessados diretamente de fora da classe onde são definidos, a menos que haja uma relação de herança (subclasse) entre a classe que acessa o membro e a classe que o define.
+
+Exemplo:
+
+package pacote1;
+
+public class ClasseBase {
+    protected int valorProtegido;
+}
+
+package pacote2;
+
+import pacote1.ClasseBase;
+
+public class SubClasse extends ClasseBase {
+    public void exemploAcessoProtegido() {
+        valorProtegido = 42; // Acesso permitido em subclasses
+    }
+}
+
+public class OutraClasse {
+    public void exemploAcessoProtegido() {
+        ClasseBase objeto = new ClasseBase();
+        objeto.valorProtegido = 42; // Erro de compilação, acesso não permitido em classes não relacionadas
+    }
+}
+
+O modificador protected é útil quando você deseja que uma classe e suas subclasses compartilhem determinados membros sem torná-los públicos. Isso ajuda a encapsular dados e funcionalidades, permitindo que as classes que não fazem parte da hierarquia de herança não acessem diretamente esses membros. Isso é útil para manter a integridade dos dados e promover a reutilização do código por meio da herança.
+
+ É possível que uma classe que herda de outra classe (uma subclasse) que está em um pacote diferente acesse métodos e atributos com o modificador protected. O modificador protected permite que as subclasses acessem esses membros, independentemente de estarem em pacotes diferentes.
+
+Aqui está um exemplo para ilustrar isso:
+
+Suponha que temos uma classe ClasseBase no pacote "pacote1" com um atributo protected:
+
+
+package pacote1;
+
+public class ClasseBase {
+    protected int atributoProtegido;
+}
+Em seguida, temos uma subclasse SubClasse no pacote "pacote2" que herda de ClasseBase:
+
+
+package pacote2;
+
+import pacote1.ClasseBase;
+
+public class SubClasse extends ClasseBase {
+    public void exemploAcessoProtegido() {
+        atributoProtegido = 42; // Acesso permitido em subclasses
+    }
+}
+Neste exemplo, a classe SubClasse está em um pacote diferente da ClasseBase, mas ela ainda pode acessar o atributo atributoProtegido da superclasse porque o modificador protected permite esse tipo de acesso em uma relação de herança.
+
+Lembre-se de que a visibilidade dos membros da superclasse depende do modificador de acesso que você escolhe ao projetar suas classes. O modificador protected é uma das maneiras de permitir o acesso a membros da superclasse em subclasses, independentemente do pacote em que as classes estão localizadas.
