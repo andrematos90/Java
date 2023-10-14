@@ -1,0 +1,22 @@
+Uma classe abstrata em Java é uma classe que não pode ser instanciada diretamente, o que significa que você não pode criar objetos a partir dela. Em vez disso, ela serve como um modelo ou um tipo genérico para outras classes que estendem (herdam) dela. Classes abstratas são utilizadas para definir métodos e campos que são comuns a várias classes relacionadas, fornecendo assim uma estrutura comum para essas classes derivadas.
+
+Aqui estão algumas características-chave das classes abstratas em Java:
+
+Palavra-chave abstract: Para criar uma classe abstrata, você deve usar a palavra-chave abstract na declaração da classe. Por exemplo:
+
+abstract class MinhaClasseAbstrata {
+    // Campos e métodos podem ser definidos aqui.
+}
+
+Métodos abstratos: Uma classe abstrata pode conter métodos abstratos, que são métodos que não têm uma implementação definida na classe abstrata. Em vez disso, as classes que estendem a classe abstrata devem fornecer uma implementação para esses métodos. Os métodos abstratos são declarados usando a palavra-chave abstract e não possuem corpo (sem chaves {}).
+ Por exemplo:
+
+abstract void meuMetodoAbstrato();
+
+Métodos concretos: Além dos métodos abstratos, uma classe abstrata também pode conter métodos com implementações concretas (ou seja, métodos regulares que têm corpo e podem ser chamados). As subclasses podem herdar esses métodos ou substituí-los, se necessário.
+
+Herança: Classes concretas podem estender (herdar) uma classe abstrata para aproveitar os campos e métodos definidos na classe abstrata. As subclasses devem fornecer uma implementação para todos os métodos abstratos herdados ou elas próprias devem ser declaradas como classes abstratas.
+
+Objetos não podem ser instanciados: Como mencionado anteriormente, você não pode criar objetos diretamente a partir de uma classe abstrata. Em vez disso, você cria objetos a partir de classes concretas que estendem a classe abstrata.
+
+Classes abstratas são úteis para promover a reutilização de código e criar uma hierarquia de classes onde a classe abstrata define o comportamento comum e as subclasses específicas implementam comportamentos especializados. Isso segue o princípio da programação orientada a objetos conhecido como herança.
