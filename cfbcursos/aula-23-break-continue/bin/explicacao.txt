@@ -1,0 +1,39 @@
+
+Em Java, break e continue são palavras-chave usadas para controlar o fluxo de execução em loops, como for, while, e do-while, e também em estruturas de controle, como switch. Eles desempenham funções distintas no controle do fluxo:
+
+break:
+
+O break é usado para encerrar a execução de um loop ou sair de uma estrutura switch. Quando o break é encontrado, o controle do programa sai imediatamente do loop ou do switch.
+
+Normalmente, o break é usado para sair de um loop quando uma condição específica é atendida.
+
+Aqui está um exemplo de uso do break em um loop for:
+
+
+for (int i = 1; i <= 10; i++) {
+    if (i == 5) {
+        break; // Sai do loop quando i é igual a 5
+    }
+    System.out.println(i);
+}
+No exemplo acima, o loop é interrompido quando i é igual a 5, e a execução do programa continua após o loop.
+
+continue:
+
+O continue é usado para pular a iteração atual de um loop e continuar com a próxima iteração. Em outras palavras, ele permite que você ignore temporariamente o código dentro do loop e vá diretamente para a próxima iteração.
+
+O continue é geralmente usado quando você deseja ignorar uma iteração com base em uma condição específica sem interromper todo o loop.
+
+Aqui está um exemplo de uso do continue em um loop for:
+
+
+for (int i = 1; i <= 10; i++) {
+    if (i % 2 == 0) {
+        continue; // Pula a iteração se i for par
+    }
+    System.out.println(i);
+}
+
+No exemplo acima, a iteração é pulada se i for par, e a execução continua com a próxima iteração.
+
+Em resumo, break é usado para sair de um loop ou switch, enquanto continue é usado para pular uma iteração de um loop e continuar com a próxima. Ambos são úteis para controlar o fluxo de execução em situações específicas, permitindo maior flexibilidade no uso de loops em Java.
