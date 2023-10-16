@@ -1,4 +1,4 @@
-public class Animal implements SerVivo{
+abstract class Animal implements SerVivo{
 
     private String especie;
     private String familia;
