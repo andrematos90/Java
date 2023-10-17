@@ -1,0 +1,26 @@
+Em Java, você pode passar um array como parâmetro para uma função da mesma forma que passaria qualquer outro tipo de variável. Quando você passa um array como argumento para uma função, na verdade está passando uma referência para o array, o que significa que a função manipulará o mesmo array na memória principal. Isso ocorre porque os arrays em Java são objetos, e os objetos são passados por referência.
+
+Aqui está um exemplo simples de como passar um array como parâmetro de função em Java:
+
+public class ExemploPassagemDeArray {
+
+    public static void main(String[] args) {
+        int[] numeros = {1, 2, 3, 4, 5};
+
+        // Chamando a função e passando o array como parâmetro
+        imprimirNumeros(numeros);
+    }
+
+    public static void imprimirNumeros(int[] array) {
+        // A função recebe o array como parâmetro
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i] + " ");
+        }
+    }
+}
+
+Neste exemplo, a função imprimirNumeros recebe um array de inteiros como parâmetro e simplesmente imprime os valores do array. Observe que não há necessidade de retornar o array da função, pois a função manipula o próprio array que foi passado.
+
+Lembre-se de que, ao passar um array para uma função, qualquer modificação feita no array dentro da função afetará o array original fora da função, pois a função trabalha com a referência para o mesmo array na memória.
+
+Além disso, você pode passar arrays de outros tipos, como arrays de objetos, arrays de strings, etc., da mesma maneira. A ideia principal é que você está passando uma referência ao array, o que permite que a função acesse e manipule os elementos do array original.
