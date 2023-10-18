@@ -32,3 +32,44 @@ public class Exemplo {
 }
 
 Em resumo, em Java, os tipos primitivos são passados por valor, o que significa que as operações dentro do método não afetam a variável original. Para objetos, a referência ao objeto é passada, permitindo que as alterações feitas dentro do método afetem o objeto original. No entanto, o objeto em si não pode ser substituído por outro objeto usando a passagem por referência.
+
+
+Em Java, os arrays são objetos e, quando passados para uma função, são passados por referência. Isso significa que, quando você passa um array para uma função e faz alterações nele dentro da função, as alterações serão refletidas no array original fora da função. Portanto, é possível que uma função que modifica um array retorne void, porque as alterações já ocorrem no array passado como argumento, e não é necessário retornar uma cópia do array modificado.
+
+Por outro lado, quando você passa variáveis de tipos primitivos (como int, double, char, etc.) para uma função, elas são passadas por valor, o que significa que uma cópia do valor da variável é passada para a função, e qualquer alteração feita dentro da função não afetará a variável original fora da função. Nesse caso, se você deseja que a função retorne um valor modificado, você deve declarar a função para que retorne o novo valor ou, alternativamente, você pode passar a variável como um argumento e atualizá-la dentro da função, se desejar que a variável original seja modificada.
+
+Aqui estão alguns exemplos para ilustrar esses conceitos:
+
+Exemplo com array (passado por referência):
+
+public class ExemploArray {
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3};
+        modifyArray(arr);
+        for (int num : arr) {
+            System.out.print(num + " "); // Isso imprimirá os valores alterados
+        }
+    }
+
+    public static void modifyArray(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            array[i] *= 2; // Altera o array original
+        }
+    }
+}
+
+Exemplo com variável de tipo primitivo (passada por valor):
+
+
+public class ExemploVariavelPrimitiva {
+    public static void main(String[] args) {
+        int x = 5;
+        modifyVariable(x);
+        System.out.println(x); // Isso imprimirá 5, porque a função não afetou a variável original
+    }
+
+    public static void modifyVariable(int var) {
+        var = var * 2; // Isso modifica uma cópia da variável original
+    }
+}
+Portanto, para variáveis de tipos primitivos, se você deseja que a função modifique a variável original, você deve retornar o novo valor da função ou passar a variável como argumento por referência (por exemplo, encapsulando-a em um objeto).
