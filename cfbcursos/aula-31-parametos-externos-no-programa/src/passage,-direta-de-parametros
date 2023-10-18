@@ -1,0 +1,21 @@
+Você pode passar valores para um programa Java na própria chamada do programa através dos argumentos de linha de comando. Os argumentos de linha de comando são passados como strings para o método main da classe principal do programa Java. Aqui está um exemplo de como fazer isso:
+
+Suponha que você tenha um programa Java chamado MeuPrograma com o seguinte código:
+
+public class MeuPrograma {
+    public static void main(String[] args) {
+        System.out.println("Argumentos de linha de comando:");
+        for (String arg : args) {
+            System.out.println(arg);
+        }
+    }
+}
+
+Para passar valores ao chamar o programa, você pode fazê-lo a partir da linha de comando. Aqui está como você pode fazer isso no prompt de comando ou terminal:
+
+
+java MeuPrograma arg1 arg2 arg3
+
+Neste exemplo, arg1, arg2 e arg3 são os argumentos que você está passando para o programa. Quando você executa o programa dessa maneira, os valores são armazenados no array args na função main do seu programa, e o programa exibirá os argumentos na saída padrão.
+
+No código acima, o programa Java MeuPrograma simplesmente imprime todos os argumentos passados na linha de comando. Você pode acessar esses argumentos e usá-los em seu programa da maneira que for necessário, como configurar variáveis, realizar cálculos ou qualquer outra ação que dependa dos argumentos passados.
