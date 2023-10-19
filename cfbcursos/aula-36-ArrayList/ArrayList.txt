@@ -10,27 +10,27 @@ Tipo de Elementos: Um ArrayList pode conter elementos de qualquer tipo, incluind
 
 Exemplo de criação de um ArrayList de strings:
 
-java
-Copy code
 ArrayList<String> listaDeNomes = new ArrayList<>();
+
 Métodos Úteis: A classe ArrayList oferece uma variedade de métodos para adicionar, remover, acessar e manipular elementos. Alguns dos métodos mais comuns incluem add(), remove(), get(), size(), isEmpty(), contains(), e outros.
 
 Exemplo de adição e remoção de elementos:
 
-java
-Copy code
 listaDeNomes.add("Alice");
-listaDeNomes.add("Bob");
+listaDeNomes.add("André");
 listaDeNomes.remove(0); // Remove o primeiro elemento ("Alice")
+
+
+
 Iteração: Você pode percorrer os elementos de um ArrayList usando um loop for ou um loop foreach (for-each).
 
 Exemplo de iteração com um loop foreach:
 
-java
-Copy code
 for (String nome : listaDeNomes) {
     System.out.println(nome);
 }
+
+
 Redimensionamento Interno: À medida que você adiciona elementos a um ArrayList, ele redimensiona automaticamente sua capacidade interna, se necessário, para acomodar mais elementos. Isso é feito de maneira eficiente para garantir um bom desempenho.
 
 Alocação Dinâmica: Um ArrayList aloca automaticamente memória conforme necessário para armazenar elementos, tornando-o adequado para casos em que o número de elementos não é conhecido antecipadamente.
@@ -38,3 +38,53 @@ Alocação Dinâmica: Um ArrayList aloca automaticamente memória conforme neces
 Thread-Safety: ArrayList não é thread-safe por padrão, o que significa que não é seguro para uso em ambientes concorrentes sem sincronização. Se você precisa de uma estrutura de dados segura para threads, considere usar Vector ou sincronizar manualmente o acesso a um ArrayList.
 
 Em resumo, o ArrayList em Java é uma estrutura de dados flexível e conveniente para armazenar coleções de elementos. É amplamente utilizado em programação Java e é uma escolha comum para muitas tarefas de armazenamento de dados dinâmicos.
+
+
+Métodos da Classe ArrayList:
+
+
+A classe ArrayList em Java fornece uma variedade de métodos para adicionar, remover, acessar e manipular elementos na lista. Aqui estão alguns dos métodos mais comuns da classe ArrayList:
+
+Métodos para Adicionar Elementos:
+
+add(E elemento): Adiciona um elemento ao final da lista.
+add(int índice, E elemento): Adiciona um elemento em uma posição específica na lista.
+addAll(Collection<? extends E> coleção): Adiciona todos os elementos de uma coleção à lista.
+
+
+Métodos para Remover Elementos:
+
+remove(int índice): Remove o elemento na posição especificada.
+remove(Object objeto): Remove a primeira ocorrência do objeto especificado.
+clear(): Remove todos os elementos da lista.
+
+
+Métodos para Acessar Elementos:
+
+get(int índice): Retorna o elemento na posição especificada.
+set(int índice, E elemento): Substitui o elemento na posição especificada por outro elemento.
+indexOf(Object objeto): Retorna o índice da primeira ocorrência do objeto especificado na lista.
+lastIndexOf(Object objeto): Retorna o índice da última ocorrência do objeto especificado na lista.
+
+Métodos de Informação da Lista:
+
+size(): Retorna o número de elementos na lista.
+isEmpty(): Verifica se a lista está vazia.
+contains(Object objeto): Verifica se a lista contém o objeto especificado.
+
+
+Métodos para Iteração:
+
+iterator(): Retorna um iterador para percorrer a lista.
+forEach(Consumer<? super E> ação): Executa uma ação para cada elemento na lista.
+spliterator(): Divide a lista em partes menores para processamento paralelo.
+
+
+Outros Métodos Úteis:
+
+toArray(): Converte a lista em um array.
+subList(int doInício, int atéOnde): Retorna uma sublista da lista original.
+equals(Object outraLista): Verifica se a lista é igual a outra lista.
+sort(Comparator<? super E> comparador): Ordena os elementos da lista com base em um comparador.
+
+Lembre-se de que a classe ArrayList implementa a interface List, portanto, herda todos os métodos definidos na interface List, além dos métodos mencionados acima. Isso torna o ArrayList uma estrutura de dados muito flexível e útil para armazenar coleções de elementos em Java.
