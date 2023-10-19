@@ -1,0 +1,23 @@
+Em Java, a palavra-chave throws é usada em conjunto com a declaração de um método para indicar que o método pode lançar exceções de um tipo específico. Isso é parte do mecanismo de tratamento de exceções da linguagem e é importante para o controle de fluxo e a manipulação de erros em programas Java. Aqui está uma explicação mais detalhada sobre como funciona o throws:
+
+Declaração de exceção com throws:
+Quando você define um método que pode gerar uma exceção, você deve declarar as exceções que esse método pode lançar. Você faz isso usando a palavra-chave throws na declaração do método, seguida pelo tipo de exceção que o método pode lançar. Por exemplo:
+
+public void meuMetodo() throws MinhaExcecao {
+    // Código do método que pode lançar uma exceção
+}
+
+Tipos de exceções:
+Você pode listar várias exceções separadas por vírgulas no throws. Isso significa que o método pode lançar qualquer uma das exceções especificadas. Por exemplo:
+
+public void meuMetodo() throws Excecao1, Excecao2 {
+    // Código do método que pode lançar Excecao1 ou Excecao2
+}
+
+Obrigações do método chamador:
+Quando um método é declarado com throws, o código que chama esse método deve lidar com as exceções que o método pode lançar. Isso pode ser feito usando uma cláusula try-catch para capturar e tratar a exceção ou usando throws para repassar a exceção para métodos superiores na pilha de chamadas. Se a exceção não for tratada em nenhum lugar na pilha de chamadas, o programa lançará uma exceção não tratada, o que geralmente resultará na terminação do programa.
+
+Hierarquia de exceções:
+Em Java, as exceções são organizadas em uma hierarquia de classes. A classe Exception é a superclasse de todas as exceções. As exceções específicas são subtipos dessa classe. Isso permite que você capture exceções específicas antes de capturar exceções mais genéricas. Por exemplo, você pode capturar uma IOException antes de capturar uma Exception, pois IOException é um subtipo de Exception.
+
+O uso apropriado do throws ajuda a criar código robusto e legível, indicando claramente as exceções que um método pode lançar e forçando o tratamento adequado das exceções no código que o chama. É uma parte fundamental do tratamento de exceções em Java.
