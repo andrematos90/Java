@@ -1,0 +1,25 @@
+A classe String em Java fornece diversos métodos para manipular strings. Abaixo, vou listar alguns dos métodos mais comuns da classe String em Java:
+
+length(): Retorna o comprimento da string.
+charAt(int index): Retorna o caractere na posição especificada.
+concat(String str): Concatena a string especificada à string atual.
+equals(Object another): Verifica se a string é igual a outra string.
+equalsIgnoreCase(String another): Verifica se a string é igual a outra string, ignorando maiúsculas e minúsculas.
+compareTo(String another): Compara duas strings lexicograficamente.
+startsWith(String prefix): Verifica se a string começa com o prefixo especificado.
+endsWith(String suffix): Verifica se a string termina com o sufixo especificado.
+indexOf(String str): Retorna a primeira ocorrência da substring especificada.
+lastIndexOf(String str): Retorna a última ocorrência da substring especificada.
+substring(int beginIndex): Retorna uma substring começando a partir do índice especificado.
+substring(int beginIndex, int endIndex): Retorna uma substring dentro do intervalo de índices especificado.
+replace(char oldChar, char newChar): Substitui todas as ocorrências do caractere antigo pelo caractere novo.
+replaceAll(String regex, String replacement): Substitui todas as ocorrências de uma expressão regular pela string de substituição.
+toLowerCase(): Converte a string para minúsculas.
+toUpperCase(): Converte a string para maiúsculas.
+trim(): Remove espaços em branco do início e do fim da string.
+split(String regex): Divide a string em substrings com base em uma expressão regular.
+isEmpty(): Verifica se a string está vazia.
+contains(CharSequence sequence): Verifica se a string contém a sequência especificada.
+
+
+Esses são apenas alguns dos métodos da classe String. A classe String em Java é imutável, o que significa que, na maioria dos casos, as operações de manipulação de string retornam uma nova string em vez de modificar a string original. Portanto, é importante lembrar que as strings são objetos imutáveis em Java, e qualquer modificação resultará em uma nova string.
