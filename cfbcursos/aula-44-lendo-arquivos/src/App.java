@@ -7,7 +7,7 @@ import java.nio.file.Paths;
 public class App {
     public static void main(String[] args){
       
-       Path arquivo = Paths.get("C/Users/andre/Documents/GitHub/Projetos-Praticos/CRUD%Java%com%Mysql%JDBC/passos.txt");
+       Path arquivo = Paths.get("C:/Users/andre/Downloads/passos.txt/");
 
 
        if(Files.exists(arquivo)){
