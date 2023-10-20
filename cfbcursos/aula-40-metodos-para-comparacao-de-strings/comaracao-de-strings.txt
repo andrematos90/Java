@@ -1,0 +1,56 @@
+Em Java, você pode comparar strings usando vários métodos, dependendo do tipo de comparação que deseja realizar. Alguns dos métodos de comparação de strings mais comuns incluem:
+
+equals(String outraString): Este método verifica se o conteúdo das duas strings é exatamente o mesmo. Ele é sensível a maiúsculas e minúsculas, ou seja, "Texto" e "texto" não são considerados iguais.
+
+String str1 = "hello";
+String str2 = "Hello";
+
+boolean saoIguais = str1.equals(str2); // Retorna false
+equalsIgnoreCase(String outraString): Este método compara o conteúdo das duas strings, ignorando diferenças de maiúsculas e minúsculas.
+
+String str1 = "hello";
+String str2 = "Hello";
+
+boolean saoIguaisIgnoreCaixa = str1.equalsIgnoreCase(str2); // Retorna true
+
+
+compareTo(String outraString): Este método compara duas strings lexicograficamente (em ordem alfabética). Ele retorna um valor negativo se a string invocadora precede a outra string, um valor positivo se a outra string precede a string invocadora e zero se as duas strings forem idênticas.
+
+String str1 = "apple";
+String str2 = "banana";
+
+int resultado = str1.compareTo(str2); // Retorna um valor negativo
+
+
+compareToIgnoreCase(String outraString): Este método funciona da mesma forma que compareTo, mas ignora diferenças de maiúsculas e minúsculas.
+
+
+String str1 = "Apple";
+String str2 = "banana";
+
+int resultado = str1.compareToIgnoreCase(str2); // Retorna um valor negativo
+
+
+startsWith(String prefixo): Este método verifica se a string começa com o prefixo especificado.
+
+String texto = "Hello, world!";
+
+boolean comecaCom = texto.startsWith("Hello"); // Retorna true
+
+
+endsWith(String sufixo): Este método verifica se a string termina com o sufixo especificado.
+
+
+String texto = "Hello, world!";
+
+boolean terminaCom = texto.endsWith("world!"); // Retorna true
+
+
+contains(CharSequence sequencia): Este método verifica se a string contém a sequência especificada.
+
+
+String texto = "The quick brown fox";
+
+boolean contem = texto.contains("fox"); // Retorna true
+
+Estes são alguns dos métodos de comparação de strings mais utilizados em Java. A escolha do método depende das necessidades específicas do seu programa, como diferenciação entre maiúsculas e minúsculas, comparação lexicográfica, entre outros.
