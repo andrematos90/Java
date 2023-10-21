@@ -1,0 +1,25 @@
+Uma fila (queue, em inglês) é uma estrutura de dados que segue o princípio "primeiro a entrar, primeiro a sair" (FIFO - First In, First Out). Isso significa que o primeiro elemento inserido na fila é o primeiro a ser removido. Filas são amplamente utilizadas em programação para armazenar e gerenciar elementos de forma que o primeiro elemento adicionado seja o primeiro a ser processado.
+
+Em Java, a classe java.util.Queue é uma interface que define métodos e comportamentos comuns para filas. Você não instancia a interface Queue diretamente, mas utiliza implementações concretas, como java.util.LinkedList ou java.util.ArrayDeque, para criar filas.
+
+Aqui estão alguns métodos comuns que você pode usar em filas em Java:
+
+add(E elemento) ou offer(E elemento): Adiciona um elemento ao final da fila. A diferença entre eles é que add gera uma exceção se a fila estiver cheia, enquanto offer retorna false se a fila estiver cheia.
+
+remove(): Remove e retorna o elemento na frente da fila. Se a fila estiver vazia, isso gera uma exceção.
+
+poll(): Remove e retorna o elemento na frente da fila. Se a fila estiver vazia, retorna null.
+
+element(): Retorna o elemento na frente da fila sem removê-lo. Se a fila estiver vazia, isso gera uma exceção.
+
+peek(): Retorna o elemento na frente da fila sem removê-lo. Se a fila estiver vazia, retorna null.
+
+isEmpty(): Verifica se a fila está vazia. Retorna true se a fila estiver vazia e false caso contrário.
+
+size(): Retorna o número de elementos na fila.
+
+clear(): Remove todos os elementos da fila, deixando-a vazia.
+
+addAll(Collection<? extends E> coleção): Adiciona todos os elementos de uma coleção à fila.
+
+As filas são amplamente utilizadas em programação para várias finalidades, como gerenciamento de tarefas em um sistema de processamento em lote, controle de tarefas em sistemas de filas de impressão, gerenciamento de recursos compartilhados em sistemas operacionais, entre outros. Elas são úteis sempre que é necessário garantir que as operações sejam processadas na ordem em que foram recebidas.
