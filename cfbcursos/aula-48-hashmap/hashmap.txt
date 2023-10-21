@@ -1,0 +1,71 @@
+HashMap é uma das estruturas de dados mais comuns e populares em Java, usada para armazenar e gerenciar pares chave-valor. Ela faz parte da coleção Java Collections Framework e implementa a interface java.util.Map. A estrutura de um HashMap permite que você associe um valor (value) a uma chave (key) e, posteriormente, recupere esse valor usando a chave. Aqui estão alguns pontos importantes sobre HashMap:
+
+Pares Chave-Valor: Um HashMap armazena os dados na forma de pares chave-valor, onde a chave é um objeto que é usado para recuperar o valor associado.
+
+Não Ordenado: Um HashMap não mantém a ordem dos elementos. Isso significa que a ordem em que você insere elementos não é necessariamente a ordem em que eles são recuperados.
+
+Chaves Únicas: As chaves em um HashMap são únicas. Isso significa que você não pode ter duas chaves iguais no mesmo HashMap.
+
+Permite Chaves Nulas: Um HashMap permite uma única chave nula, mas não permite múltiplas chaves nulas.
+
+Eficiência: A recuperação de valores de um HashMap é eficiente, geralmente com complexidade O(1), desde que não haja colisões graves (mais de uma chave mapeada para o mesmo valor). HashMap é amplamente utilizado para pesquisa e recuperação de dados rápidas.
+
+Aqui está um exemplo simples de como usar um HashMap em Java:
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class ExemploHashMap {
+    public static void main(String[] args) {
+        // Cria um HashMap
+        Map<String, Integer> mapa = new HashMap<>();
+
+        // Adiciona pares chave-valor ao HashMap
+        mapa.put("Alice", 25);
+        mapa.put("Bob", 30);
+        mapa.put("Charlie", 28);
+
+        // Recupera valores com base nas chaves
+        int idadeAlice = mapa.get("Alice");
+        int idadeBob = mapa.get("Bob");
+
+        System.out.println("Idade de Alice: " + idadeAlice);
+        System.out.println("Idade de Bob: " + idadeBob);
+    }
+}
+Neste exemplo, estamos criando um HashMap que mapeia nomes para idades. Usamos o método put para adicionar pares chave-valor e o método get para recuperar os valores com base nas chaves.
+
+HashMap é uma estrutura de dados versátil e amplamente usada em Java, adequada para uma variedade de aplicações, incluindo armazenamento e recuperação eficientes de dados. No entanto, é importante notar que a ordem dos elementos não é garantida, e você pode usar outras implementações, como LinkedHashMap, se precisar de uma ordem específica de inserção.
+
+ Em um HashMap, as chaves podem ser de diferentes tipos, desde que obedeçam aos requisitos de igualdade e hash. Isso significa que você pode ter pares chave-valor onde as chaves são de tipos diferentes. Por exemplo, você pode ter um HashMap que mapeia IDs (int) para nomes de pessoas (String), ou qualquer combinação de tipos que satisfaçam os requisitos do HashMap.
+
+
+métodos
+
+HashMap em Java oferece vários métodos para adicionar, remover, recuperar e verificar elementos no mapa. Aqui estão alguns dos principais métodos associados a um HashMap:
+
+put(K chave, V valor): Adiciona um par chave-valor ao HashMap. Se a chave já existir, o valor associado a essa chave será substituído pelo novo valor.
+
+get(Object chave): Recupera o valor associado à chave especificada. Se a chave não existir no mapa, retorna null.
+
+remove(Object chave): Remove o par chave-valor associado à chave especificada.
+
+containsKey(Object chave): Verifica se o mapa contém uma chave específica. Retorna true se a chave estiver presente e false caso contrário.
+
+containsValue(Object valor): Verifica se o mapa contém um valor específico. Retorna true se o valor estiver presente e false caso contrário.
+
+size(): Retorna o número de pares chave-valor no mapa.
+
+isEmpty(): Verifica se o mapa está vazio. Retorna true se não houver pares chave-valor e false caso contrário.
+
+clear(): Remove todos os pares chave-valor do mapa, deixando-o vazio.
+
+keySet(): Retorna um conjunto de todas as chaves no mapa como um objeto do tipo Set.
+
+values(): Retorna uma coleção de todos os valores no mapa como um objeto do tipo Collection.
+
+entrySet(): Retorna um conjunto de objetos Map.Entry, que representam pares chave-valor no mapa.
+
+putAll(Map<? extends K, ? extends V> mapa): Adiciona todos os pares chave-valor de outro mapa ao HashMap.
+
+Lembre-se de que o HashMap não garante uma ordem específica dos elementos, mas você pode usar LinkedHashMap se precisar manter a ordem de inserção. Além disso, se você precisa de sincronização para acesso concorrente, pode usar ConcurrentHashMap.
