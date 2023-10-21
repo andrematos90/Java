@@ -1,0 +1,73 @@
+
+
+Em Java, uma pilha (stack) é uma estrutura de dados que segue o princípio de "último a entrar, primeiro a sair" (LIFO - Last In, First Out). Isso significa que o último elemento adicionado à pilha é o primeiro a ser removido. A pilha é uma coleção de elementos ordenada de tal forma que você só pode acessar o elemento no topo da pilha. Essa estrutura é comumente usada para gerenciar a execução de métodos e acompanhar o estado das chamadas de método em um programa.
+
+Em Java, a classe java.util.Stack fornece uma implementação de uma pilha, mas ela não é frequentemente usada na prática. Em vez disso, a interface java.util.Deque é geralmente preferida, com implementações como java.util.ArrayDeque ou java.util.LinkedList, pois elas oferecem funcionalidades de pilha, bem como outras operações de fila e deque.
+
+Aqui está como você pode criar e usar uma pilha em Java usando Deque:
+
+
+import java.util.Deque;
+import java.util.LinkedList;
+
+public class ExemploPilha {
+    public static void main(String[] args) {
+        Deque<Integer> pilha = new LinkedList<>();
+
+        // Adicionando elementos à pilha
+        pilha.push(1);
+        pilha.push(2);
+        pilha.push(3);
+
+        // Acessando e removendo o elemento no topo da pilha
+        int topo = pilha.pop();
+        System.out.println("Elemento no topo: " + topo);
+
+        // Verificando se a pilha está vazia
+        boolean vazia = pilha.isEmpty();
+        System.out.println("A pilha está vazia? " + vazia);
+    }
+}
+Neste exemplo, estamos usando a implementação LinkedList da interface Deque para criar uma pilha. Usamos o método push para adicionar elementos à pilha e pop para remover o elemento no topo da pilha. Também podemos verificar se a pilha está vazia usando o método isEmpty.
+
+Pilhas são úteis em situações onde você precisa rastrear o histórico de operações, como em expressões matemáticas reversas (RPN), rastreamento de chamadas de método, entre outros cenários.
+
+
+métodos de pilha
+
+
+Em Java, você pode usar diversos métodos em uma pilha (estrutura de dados seguindo o princípio LIFO - Last In, First Out) por meio da interface Deque (Double-Ended Queue), que oferece funcionalidades de pilha. Aqui estão alguns dos métodos mais comuns que você pode usar:
+
+push(E elemento): Adiciona um elemento ao topo da pilha.
+
+pop(): Remove e retorna o elemento no topo da pilha. Se a pilha estiver vazia, isso gera uma exceção.
+
+peek(): Retorna o elemento no topo da pilha sem removê-lo. Se a pilha estiver vazia, isso gera uma exceção.
+
+isEmpty(): Verifica se a pilha está vazia. Retorna true se a pilha estiver vazia e false caso contrário.
+
+size(): Retorna o número de elementos na pilha.
+
+clear(): Remove todos os elementos da pilha, deixando-a vazia.
+
+Além desses métodos básicos, você pode usar métodos adicionais da interface Deque para operações mais avançadas, já que a pilha é uma implementação específica de um deque. Alguns desses métodos incluem:
+
+offerFirst(E elemento): Adiciona um elemento à parte frontal da pilha. Isso é o mesmo que push.
+
+removeFirst(): Remove e retorna o elemento na parte frontal da pilha. Isso é o mesmo que pop.
+
+element(): Retorna o elemento na parte frontal da pilha, sem removê-lo. Isso é o mesmo que peek.
+
+removeLast(): Remove e retorna o elemento no final da pilha.
+
+offerLast(E elemento): Adiciona um elemento ao final da pilha.
+
+remove(E elemento): Remove a primeira ocorrência do elemento especificado na pilha.
+
+contains(Object elemento): Verifica se a pilha contém o elemento especificado.
+
+toArray(): Converte a pilha em um array.
+
+addAll(Collection<? extends E> coleção): Adiciona todos os elementos de uma coleção à pilha.
+
+Lembre-se de que a escolha dos métodos a serem usados depende dos requisitos específicos do seu programa e de como você deseja manipular a pilha. Os métodos básicos push, pop, peek, isEmpty e size são os mais comuns para operações de pilha simples.
