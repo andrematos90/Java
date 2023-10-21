@@ -1,0 +1,37 @@
+Em Java, um Iterator é uma interface que faz parte do framework de coleções da linguagem. Ela é usada para percorrer e iterar (ou seja, acessar cada elemento um por um) através de uma coleção de elementos, como listas, conjuntos, mapas e outras estruturas de dados. A interface Iterator fornece métodos para navegar pelos elementos de uma coleção sem expor os detalhes da implementação da coleção subjacente.
+
+Aqui estão alguns dos métodos mais comuns da interface Iterator:
+
+boolean hasNext(): Verifica se ainda há elementos na coleção que podem ser iterados. Retorna true se há elementos a serem lidos, caso contrário, retorna false.
+
+E next(): Retorna o próximo elemento da coleção e avança o iterador para o próximo elemento na sequência. Se não houver mais elementos a serem lidos, lançará uma exceção NoSuchElementException. Portanto, é recomendável verificar hasNext() antes de chamar next().
+
+void remove(): Remove o elemento atual da coleção (opcional). Nem todos os iteradores suportam essa operação. Tentar chamar remove() em um iterador que não suporta a remoção lançará uma exceção UnsupportedOperationException.
+
+Aqui está um exemplo de como usar um Iterator para percorrer uma lista em Java:
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+public class ExemploIterator {
+    public static void main(String[] args) {
+        List<String> lista = new ArrayList<>();
+        lista.add("A");
+        lista.add("B");
+        lista.add("C");
+
+        // Obtém um Iterator para a lista
+        Iterator<String> iterator = lista.iterator();
+
+        // Itera pela lista usando o Iterator
+        while (iterator.hasNext()) {
+            String elemento = iterator.next();
+            System.out.println(elemento);
+        }
+    }
+}
+
+Neste exemplo, primeiro criamos uma lista de strings e, em seguida, obtivemos um Iterator para essa lista usando o método iterator(). Em seguida, usamos um loop while para iterar pelos elementos da lista verificando hasNext() e usando next() para acessar cada elemento.
+
+Os Iterators são uma forma comum de percorrer coleções em Java e são usados em muitos contextos, como iteração por listas, conjuntos e mapas. Eles são especialmente úteis quando não sabemos a estrutura subjacente da coleção e desejamos percorrer seus elementos de forma genérica.
