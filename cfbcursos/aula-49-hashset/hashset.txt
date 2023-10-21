@@ -1,0 +1,74 @@
+Em Java, um HashSet é uma implementação da interface Set que representa uma coleção de elementos não ordenados e não duplicados. Ele faz parte do framework de coleções da linguagem e é muito útil quando você precisa armazenar elementos de maneira eficiente, garantindo que não haja duplicatas.
+
+Aqui estão alguns aspectos importantes do HashSet em Java:
+
+Não permite duplicatas: Um HashSet não pode conter elementos duplicados. Se você tentar adicionar um elemento que já está presente, a operação não terá efeito.
+
+Não garante ordem: Os elementos em um HashSet não são mantidos em nenhuma ordem específica. Isso significa que você não pode contar com a ordem em que os elementos foram adicionados.
+
+Desempenho rápido: As operações de adição, remoção e busca em um HashSet são geralmente muito eficientes. Isso é devido à implementação interna, que utiliza tabelas de dispersão (hash tables) para armazenar os elementos.
+
+Não é sincronizado: O HashSet não é thread-safe por padrão. Se você precisar usar um HashSet em ambientes concorrentes, deverá sincronizá-lo manualmente ou considerar o uso de Collections.synchronizedSet() para criar um conjunto sincronizado.
+
+Aqui está um exemplo de como usar um HashSet em Java:
+
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class ExemploHashSet {
+    public static void main(String[] args) {
+        // Cria um HashSet de strings
+        Set<String> conjunto = new HashSet<>();
+
+        // Adiciona elementos
+        conjunto.add("Maçã");
+        conjunto.add("Banana");
+        conjunto.add("Laranja");
+        conjunto.add("Maçã"); // Não terá efeito, pois "Maçã" já está presente
+
+        // Itera sobre os elementos
+        for (String fruta : conjunto) {
+            System.out.println(fruta);
+        }
+
+        // Remove um elemento
+        conjunto.remove("Banana");
+
+        // Verifica se um elemento está no conjunto
+        boolean contemLaranja = conjunto.contains("Laranja");
+        System.out.println("Contém Laranja? " + contemLaranja);
+    }
+}
+
+Este exemplo ilustra como criar um HashSet, adicionar elementos, verificar a presença de elementos, remover elementos e iterar sobre os elementos.
+
+Lembre-se de que a ordem dos elementos no HashSet não é garantida. Se você precisar de uma ordem específica, pode considerar o uso de um LinkedHashSet, que mantém a ordem de inserção dos elementos, ou um TreeSet, que armazena os elementos em ordem natural ou de acordo com um comparador fornecido.
+
+métodos
+
+O HashSet em Java implementa a interface Set, que define os métodos disponíveis para trabalhar com conjuntos. Além disso, ele herda métodos da classe AbstractSet. Aqui estão alguns dos métodos mais comuns que você pode usar ao trabalhar com um HashSet:
+
+add(E elemento): Adiciona um elemento ao conjunto, se ele ainda não estiver presente. Retorna true se o elemento foi adicionado com sucesso e false se o elemento já estiver no conjunto.
+
+remove(Object elemento): Remove um elemento do conjunto, se ele estiver presente. Retorna true se o elemento foi removido com sucesso e false se o elemento não estiver no conjunto.
+
+size(): Retorna o número de elementos no conjunto.
+
+isEmpty(): Retorna true se o conjunto estiver vazio, ou false se ele contiver elementos.
+
+contains(Object elemento): Verifica se o conjunto contém um elemento específico. Retorna true se o elemento estiver no conjunto e false caso contrário.
+
+clear(): Remove todos os elementos do conjunto, deixando-o vazio.
+
+iterator(): Retorna um iterador sobre os elementos do conjunto, permitindo que você itere sobre os elementos do conjunto usando um loop for ou while.
+
+addAll(Collection<? extends E> colecao): Adiciona todos os elementos de uma coleção à HashSet. Isso é útil para combinar conjuntos.
+
+removeAll(Collection<?> colecao): Remove todos os elementos do conjunto que também estão na coleção fornecida.
+
+retainAll(Collection<?> colecao): Remove todos os elementos do conjunto que não estão na coleção fornecida, ou seja, mantém apenas os elementos em comum com a coleção.
+
+equals(Object outroConjunto): Verifica se o conjunto é igual a outro conjunto, ou seja, se contém os mesmos elementos.
+
+Lembre-se de que, como o HashSet é uma implementação de Set, ele não mantém uma ordem específica dos elementos e não permite elementos duplicados. Portanto, ao usar métodos como add e remove, o conjunto garantirá que não haja elementos duplicados.
