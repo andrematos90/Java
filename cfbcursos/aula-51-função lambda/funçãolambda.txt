@@ -1,0 +1,18 @@
+Uma função lambda em Java é uma expressão que representa uma função anônima, ou seja, uma função que não tem um nome convencional, mas que pode ser usada para realizar uma ação específica. As funções lambda são uma das principais características introduzidas na versão 8 da linguagem Java (Java 8) e são usadas para simplificar o código, tornando-o mais conciso e legível.
+
+A sintaxe básica de uma função lambda em Java é a seguinte:
+
+(parametros) -> expressao
+parametros: Os parâmetros da função lambda, que podem ser zero ou mais parâmetros, separados por vírgulas. Se a função lambda não aceitar parâmetros, você pode deixar os parênteses vazios.
+
+expressao: A expressão que descreve o comportamento da função lambda.
+
+A função lambda pode ser usada em contextos onde uma interface funcional é esperada. Uma interface funcional é uma interface Java com apenas um único método abstrato (conhecido como método funcional). Um exemplo de interface funcional amplamente usada é a interface java.util.function.Predicate<T>, que representa uma função que aceita um argumento e retorna um valor booleano.
+
+Aqui está um exemplo simples de uma função lambda que verifica se um número é par:
+
+
+Predicate<Integer> ehPar = (numero) -> numero % 2 == 0;
+Neste exemplo, Predicate<Integer> é uma interface funcional que aceita um argumento do tipo Integer e retorna um valor booleano. A função lambda (numero) -> numero % 2 == 0 verifica se o número é par (retorna true se for par e false se for ímpar).
+
+As funções lambda são frequentemente usadas em Java para simplificar o código ao trabalhar com coleções, threads, eventos e outras tarefas onde o comportamento pode ser passado como argumento. Elas tornam o código mais conciso, legível e facilitam a implementação de programação funcional em Java.
