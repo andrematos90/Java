@@ -1,0 +1,64 @@
+A biblioteca Math é uma biblioteca padrão da linguagem Java que fornece funções matemáticas e constantes matemáticas úteis para realizar cálculos matemáticos em programas Java. Ela está contida no pacote java.lang e, portanto, não é necessário importá-la explicitamente, pois já faz parte do núcleo da linguagem.
+
+A biblioteca Math oferece uma ampla variedade de funções matemáticas, incluindo, mas não se limitando a:
+
+Funções trigonométricas: sin(), cos(), tan(), asin(), acos(), atan() e outras relacionadas a seno, cosseno e tangente.
+
+Funções exponenciais e logaritmos: exp(), log(), log10(), pow() (potência) e sqrt() (raiz quadrada).
+
+Funções de arredondamento: ceil() (teto), floor() (piso) e round() (arredondamento).
+
+Funções de valor absoluto: abs() (valor absoluto).
+
+Constantes matemáticas: Math.PI (pi) e Math.E (número de Euler).
+
+Exemplo de uso da biblioteca Math para calcular o seno e o logaritmo de um número em Java:
+
+
+public class ExemploMath {
+    public static void main(String[] args) {
+        double numero = 2.0;
+        
+        double seno = Math.sin(numero);
+        double logaritmoNatural = Math.log(numero);
+        
+        System.out.println("Seno de " + numero + " é " + seno);
+        System.out.println("Logaritmo natural de " + numero + " é " + logaritmoNatural);
+    }
+}
+
+A biblioteca Math é amplamente utilizada em tarefas matemáticas e científicas em Java e fornece funcionalidades comuns para realizar cálculos matemáticos de forma precisa e eficiente. É uma parte essencial do conjunto de bibliotecas padrão da linguagem Java.
+
+
+métodos
+
+A classe java.lang.Math em Java fornece uma variedade de métodos para realizar operações matemáticas. Alguns dos principais métodos e constantes fornecidos por essa classe incluem:
+
+Métodos trigonométricos:
+
+double Math.sin(double a): Retorna o seno do ângulo especificado em radianos.
+double Math.cos(double a): Retorna o cosseno do ângulo especificado em radianos.
+double Math.tan(double a): Retorna a tangente do ângulo especificado em radianos.
+double Math.asin(double a): Retorna o arco seno do valor especificado.
+double Math.acos(double a): Retorna o arco cosseno do valor especificado.
+double Math.atan(double a): Retorna o arco tangente do valor especificado.
+Métodos exponenciais e logarítmicos:
+7. double Math.exp(double a): Retorna a exponencial de um número especificado.
+
+double Math.log(double a): Retorna o logaritmo natural (base e) de um número especificado.
+double Math.log10(double a): Retorna o logaritmo na base 10 de um número especificado.
+double Math.pow(double a, double b): Retorna a elevado à potência b.
+double Math.sqrt(double a): Retorna a raiz quadrada de um número especificado.
+Métodos de arredondamento:
+12. double Math.ceil(double a): Retorna o menor número inteiro não menor que a (teto).
+
+double Math.floor(double a): Retorna o maior número inteiro não maior que a (piso).
+long Math.round(double a): Retorna o valor arredondado para o valor inteiro mais próximo.
+Métodos de valor absoluto:
+15. double Math.abs(double a): Retorna o valor absoluto de um número especificado.
+
+Constantes matemáticas:
+16. double Math.PI: Representa o valor de pi (π), que é aproximadamente igual a 3.141592653589793.
+
+double Math.E: Representa o número de Euler (e), que é aproximadamente igual a 2.718281828459045.
+Esses são alguns dos métodos mais comuns e constantes da classe Math. Eles são frequentemente utilizados para realizar cálculos matemáticos em Java, abrangendo desde funções trigonométricas até operações exponenciais e logarítmicas. É importante observar que todos esses métodos e constantes são estáticos, o que significa que você pode chamá-los diretamente usando o nome da classe Math, sem a necessidade de criar uma instância da classe.
