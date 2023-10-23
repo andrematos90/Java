@@ -1,0 +1,43 @@
+Spring
+
+Spring é um framework de desenvolvimento de aplicativos em Java que fornece suporte abrangente para o desenvolvimento de aplicativos empresariais. Ele simplifica o desenvolvimento de aplicativos Java, promovendo boas práticas de programação e fornecendo um conjunto de ferramentas e bibliotecas para ajudar os desenvolvedores a construir aplicativos de forma mais eficiente.
+
+O Spring Framework oferece uma variedade de recursos e módulos que abrangem diversas áreas, incluindo:
+
+Inversão de Controle (IoC): O Spring usa o princípio de Inversão de Controle para gerenciar a criação e o gerenciamento de objetos. Em vez de o desenvolvedor criar objetos diretamente, o Spring cuida disso, facilitando a configuração e a manutenção de aplicativos.
+
+Injeção de Dependência (DI): A injeção de dependência é um conceito-chave no Spring. Ele permite que os objetos dependam de outros objetos (suas dependências) sem conhecê-los diretamente. O Spring gerencia essas dependências e as injeta nos objetos conforme necessário.
+
+AOP (Programação Orientada a Aspectos): O Spring oferece suporte à AOP, que permite a separação de preocupações transversais, como logging, segurança e transações, do código de negócios principal.
+
+Módulos para diferentes fins: O Spring Framework possui módulos para diferentes finalidades, como Spring Data (para acesso a bancos de dados), Spring MVC (para desenvolvimento web), Spring Security (para segurança), Spring Boot (para criação rápida de aplicativos autônomos), e muitos outros.
+
+Integração com tecnologias diversas: O Spring é altamente adaptável e pode ser usado com várias tecnologias, como JPA, Hibernate, JDBC, REST, SOAP, e muito mais.
+
+Simplificação de tarefas comuns: O Spring Framework fornece soluções para tarefas comuns, como gerenciamento de transações, manipulação de exceções e internacionalização.
+
+Em resumo, o Spring é amplamente utilizado no desenvolvimento de aplicativos Java empresariais devido à sua capacidade de simplificar o desenvolvimento, melhorar a modularidade do código e fornecer uma ampla gama de recursos prontos para uso. Ele promove boas práticas de programação e é amplamente adotado pela comunidade Java.
+
+
+Spring Boot
+
+O Spring Boot é um projeto que faz parte do ecossistema do Spring Framework. Ele é uma extensão do Spring Framework que se concentra na simplificação do processo de desenvolvimento de aplicativos Java. O Spring Boot visa facilitar a configuração e o desenvolvimento de aplicativos empresariais, permitindo que os desenvolvedores criem rapidamente aplicativos autônomos (stand-alone) com o mínimo de esforço e configuração.
+
+Aqui estão algumas características e conceitos-chave do Spring Boot:
+
+Convenção sobre Configuração: O Spring Boot segue o princípio de "convenção sobre configuração", o que significa que ele fornece configurações padrão sensatas para muitos aspectos do desenvolvimento. Isso reduz a quantidade de configuração manual que os desenvolvedores precisam fazer.
+
+Autoconfiguração: O Spring Boot inclui uma funcionalidade chamada "autoconfiguração" que configura automaticamente componentes comuns com base nas bibliotecas que você inclui em seu projeto. Isso significa que você não precisa escrever muita configuração manualmente.
+
+Embutido: Spring Boot permite que você crie aplicativos autônomos que incluem um servidor da web incorporado, como Tomcat, Jetty ou Undertow. Isso significa que você não precisa implantar seu aplicativo em um servidor externo, tornando a inicialização e o teste de aplicativos mais simples.
+
+Geração de Projeto: O Spring Initializr é uma ferramenta online que ajuda os desenvolvedores a criar projetos Spring Boot com base em modelos pré-definidos. Isso acelera a configuração inicial do projeto.
+
+Microserviços: O Spring Boot é frequentemente usado no desenvolvimento de aplicativos de microsserviços devido à sua simplicidade e eficiência na criação de serviços independentes e autônomos.
+
+É importante destacar que o Spring Boot não é uma tecnologia separada do Spring Framework; ele é uma extensão do Spring que simplifica e acelera o desenvolvimento de aplicativos. Os desenvolvedores podem combinar o Spring Boot com outros módulos e componentes do Spring Framework, como Spring Data, Spring Security e Spring MVC, para criar aplicativos empresariais completos e poderosos de forma mais eficiente.
+
+Em resumo, o Spring Boot é uma ferramenta que facilita a criação de aplicativos Java com base no Spring Framework, com ênfase na simplificação da configuração e no desenvolvimento rápido de aplicativos autônomos.
+
+
+Pesquisar o que são beans,
