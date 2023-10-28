@@ -23,6 +23,17 @@ public class ParkingSpotController {
 
     @PostMapping
     public ResponseEntity<Object> saveParkingSpot(@RequestBody @Valid ParkingSpotDTO parkingSpotDTO){
+        if(parkingSpotService.existsByLicensePlateCar(parkingSpotDTO.getLicensePlateCar())){
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Atenção!Está placa já foi cadastrada!");
+        }
+
+        if(parkingSpotService.existsByParkingSpotNumber(parkingSpotDTO.getParkingSpotNumber())){
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Atenção número de vaga ja cadastrado!");
+        }
+        if(parkingSpotService.existsByApartmentAndBlock(parkingSpotDTO.getApartment(), parkingSpotDTO.getBlock())){
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Atenção número de apartamento já cadastrado!");
+        }
+
         var parkingSpotModel = new ParkingSpotModel();
         BeanUtils.copyProperties(parkingSpotDTO, parkingSpotModel);
         parkingSpotModel.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
