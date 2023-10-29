@@ -1,0 +1,724 @@
+ *1 -acessar spring initializr em 
+>> start.spring.io
+
+* fazer as definições e baixar o arquivo
+
+- em project definir o gerenciador de de dependencia como "Maven"
+- Linguagem java
+- e a versão "3.1.5"
+- "Group" = com.api
+- "Artifact = parking-control
+- "Description" = Demo project for Spring Boot
+- "Package name" = com.api.parking-control
+
+- Adicionar dependencias
+-Spring Web
+-Validation 
+-PostgreSQL Driver
+-Spring Data JPA 
+
+- gerar, extrair projeto e abrir com a 
+IDE
+
+
+
+
+*2 - criar base de dados "parking-control-db" no pgadmin
+
+
+
+
+
+
+
+
+*3 - criar conexao em "resources" >> "application.properties"
+
+-ficará assim: 
+
+//url de conexao
+spring.datasource.url= jdbc:postgresql://localhost:5432/parking-control-db
+//usuario postgree
+spring.datasource.username=postgres
+//password do usuario
+spring.datasource.password=1990
+//define para que as entidades sejam criadas automaticamente na base quando  a aplicação for executada
+spring.jpa.hibernate.ddl-auto=update
+//desabilita non_contextual_creation para não ocasionar confiltos
+spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true
+
+
+-executar para ver se sobe
+
+
+
+
+
+
+
+
+* 4 - criar controller para testar
+
+- colocar "@RestController" na classe "ParkinngControlApplication" para a classe saber que sera um bean do tipo controller e gerar as dependencias quando for necessario
+
+- criar o método index(); para testar
+- criar mapeamento "@GetMapping("/")
+
+-ficará assim: 
+
+package com.api.parkingcontrol;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@SpringBootApplication
+@RestController
+public class ParkingControlApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(ParkingControlApplication.class, args);
+	}
+
+	@GetMapping("/")
+	public String index(){
+		return "Olá Mundo";
+	}
+
+}
+
+
+- abrir "http://localhost:8080/" 
+e ver se funcionou
+
+- explicação: na hora que a solicitação é enviada para o servidor ela é mapeada 
+pelo método que recebe a solicitação e retorna "ola mundo"
+o spring tem uma ferramenta "dispatchseverlet" e sempre que uma requisição é enviada para a o servidor ele recebe e faz uma espécie de roteamento para qual controller deve receber e responder a solicitação
+
+
+
+
+
+
+* 5 - Montar estrutura MVC
+
+- em "com.api.parkingcontrol" criar novos
+packages
+"com.api.parkingcontrol.models"
+"com.api.parkingcontrol.controllers"
+"com.api.parkingcontrol.repositories"
+"com.api.parkingcontrol.services"
+
+
+
+
+
+
+* 6 - criar models e depois mapeamento JPA para que seja uma entidade no banco 
+
+- criar em models a classe "ParkingSpotModel"
+
+- anotar a classe com @Entity
+- @Table definir o nome da tabela 
+- implementar "Serializable" e definir o id do Serializable  "serialVersionUID=1L"
+- definir os campos da entidade
+
+- ficará assim:
+
+package com.api.parkingcontrol.models;
+
+import javax.persistence.*;
+import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.util.UUID;
+
+@Entity
+@Table(name = "TB_PARKING_SPOT")
+public class ParkingSpotModel implements Serializable {
+    private  static final long serialVersionUID = 1L;
+
+    @Id //identificador
+    //gera o id de forma automatica
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;  // id do tipo UUID para ser unico, para não ocorrer conflitos
+
+    /*numero da vaga,
+    * nullable = false para nao poder ser nulo
+    * unique = true para ser unico, nao pode ter dois cadastros de uma mesma vaga
+    * length = 10 quantidade de caracteres possiveis */
+
+    @Column(nullable = false, unique = true, length = 10)
+    private String parkingSpotNumber;
+
+    @Column(nullable = false, unique = true, length = 7)
+    private String licensePlateCar;
+
+    @Column(nullable = false, length = 70)
+    private String brandCar;
+
+    @Column(nullable = false, length = 70)
+    private String modelCar;
+
+    @Column(nullable = false, length = 70)
+    private String colorCar;
+
+    @Column(nullable = false)
+    private LocalDateTime registrationDate;
+
+    @Column(nullable = false, length = 130)
+    private String responsibleName;
+
+    @Column(nullable = false, length = 30)
+    private String apartment;
+
+    @Column(nullable = false, length = 30)
+    private String block;
+
+}
+
+- criar getter e setters 
+- botao direito no codigo "generate" >> "getters and setters" ctrl+a para selecionar todos os campos "ok"
+
+
+
+
+
+
+
+
+
+* 7 - Criar o repository utilizando o springData
+
+- em "repositories" criar a interface "ParkingSpotRepository"
+
+- extender JPARepository e passar qual vai ser o model  e o tipo de identificador <ParkingSpotModel. UUID>
+
+JPARepositorypossui métodos para realizar as transações o banco de dados
+
+JPARepository ja traz @Repository mas se quiser pode ser colocado para anotar a interface como um bean
+
+ficará assim:
+
+package com.api.parkingcontrol.repositories;
+
+import com.api.parkingcontrol.models.ParkingSpotModel;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.UUID;
+
+@Repository
+public interface ParkingSpotRepository extends JpaRepository<ParkingSpotModel, UUID> {
+
+}
+
+
+
+
+
+
+* 8 - criar em "Service" a classe "ParkingSpotService" para ser a camada intermediaria entre o controller e o respository
+
+- ParkingSpotService será um bean do spring para isso anotar a classe com @Service
+
+- criar um ponte de injeção do repository para acionar o repository em determinados casos usa se @Autowired
+
+- ou criar via construtor:
+
+final 
+   ParkingSpotRepository parkingSpotRepository;
+   
+   public ParkingSpotService(ParkingSpotRepository parkingSpotRepository){
+      this.parkingSpotRepository = parkingSpotRepository;
+   } 
+
+
+ficará assim:
+
+package com.api.parkingcontrol.services;
+
+import com.api.parkingcontrol.repositories.ParkingSpotRepository;
+import org.springframework.stereotype.Service;
+
+@Service
+public class ParkingSpotService {
+   final
+   ParkingSpotRepository parkingSpotRepository;
+
+   public ParkingSpotService(ParkingSpotRepository parkingSpotRepository){
+      this.parkingSpotRepository = parkingSpotRepository;
+   }
+}
+
+
+* 9 - criar classe "ParkingSpotController" no controller, que vai receber as solicitações (get, detete, etc..) e vai acionar o service que vai acionar o repository
+
+- usar @RestController para anotar a classe como um bean 
+
+- inserir anotações de cross origin para permitir que seja acessado de qualquer fonte: @CrossOrigin(origins = "*", maxAge = 3600)  
+
+- inserir URI 
+pode ser feito a nivel de método
+mas no caso será a  nivel de classe anotar 
+@RequestMapping() 
+- passar "/parking-spot" para acessar esse recurso 
+
+- criar ponto de injeção de dependencia do service no controller:
+
+ final ParkingSpotService parkingSpotService;
+
+    public ParkingSpotController(ParkingSpotService parkingSpotService) {
+        this.parkingSpotService = parkingSpotService;
+    }
+
+
+ficará assim: 
+
+package com.api.parkingcontrol.controllers;
+
+import com.api.parkingcontrol.services.ParkingSpotService;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@CrossOrigin(origins = "*", maxAge = 3600)
+@RequestMapping("/parking-spot")
+public class ParkingSpotController {
+    final ParkingSpotService parkingSpotService;
+
+    public ParkingSpotController(ParkingSpotService parkingSpotService) {
+        this.parkingSpotService = parkingSpotService;
+    }
+}
+
+
+
+
+
+
+
+----------------------------------------
+*10 - criar dados de entrada:
+
+- criar DTO de parkingSpot, criar novo package "dtos" dentro cria a classe "ParkingSpotDto" que fará as validações 
+
+- criar métodos getters e setters
+
+-ficará assim:
+
+package com.api.parkingcontrol.dtos;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
+public class ParkingSpotDTO {
+    @NotBlank
+    private String parkingSpotNumber;
+    @NotBlank
+    @Size(max = 7)
+    private String licensePlateCar;
+    @NotBlank
+    private String branCar;
+    @NotBlank
+    private String modelCar;
+    @NotBlank
+    private String colorCar;
+    @NotBlank
+    String responsibleName;
+    @NotBlank
+    private String apartment;
+    @NotBlank
+    private String block;
+
+    public String getParkingSpotNumber() {
+        return parkingSpotNumber;
+    }
+
+    public void setParkingSpotNumber(String parkingSpotNumber) {
+        this.parkingSpotNumber = parkingSpotNumber;
+    }
+
+    public String getLicensePlateCar() {
+        return licensePlateCar;
+    }
+
+    public void setLicensePlateCar(String licensePlateCar) {
+        this.licensePlateCar = licensePlateCar;
+    }
+
+    public String getBranCar() {
+        return branCar;
+    }
+
+    public void setBranCar(String branCar) {
+        this.branCar = branCar;
+    }
+
+    public String getModelCar() {
+        return modelCar;
+    }
+
+    public void setModelCar(String modelCar) {
+        this.modelCar = modelCar;
+    }
+
+    public String getColorCar() {
+        return colorCar;
+    }
+
+    public void setColorCar(String colorCar) {
+        this.colorCar = colorCar;
+    }
+
+    public String getResponsibleName() {
+        return responsibleName;
+    }
+
+    public void setResponsibleName(String responsibleName) {
+        this.responsibleName = responsibleName;
+    }
+
+    public String getApartment() {
+        return apartment;
+    }
+
+    public void setApartment(String apartment) {
+        this.apartment = apartment;
+    }
+
+    public String getBlock() {
+        return block;
+    }
+
+    public void setBlock(String block) {
+        this.block = block;
+    }
+}
+
+
+----------------------------------------
+
+
+
+
+
+
+
+* 11 - criar métodos no controller 
+
+-  método post ficará assim:
+
+@PostMapping
+    public ResponseEntity<Object> saveParkingSpot(@RequestBody @Valid ParkingSpotDto parkingSpotDto){
+        var parkingSpotModel = new ParkingSpotModel();
+        BeanUtils.copyProperties(parkingSpotDto, parkingSpotModel);
+        parkingSpotModel.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        return  ResponseEntity.status(HttpStatus.CREATED).body(parkingSpotService.save(parkingSpotModel));
+    }
+
+-@PostMapping essa anotação indica que é um método post 
+- ResponseEntity<Object> monta a resposta, <Object>  pq terá diferentes tipos de retorno
+-saveParkingSpot nome do método
+-parametro ParkingSpotDto parkingSpotDto
+virá como um json para isso anotação @RequestBody
+-@Valid para aplicar as validações do DTO
+- BeanUtils.copyProperties converte parkingSpotDto para parkingSpotModel antesde salvar 
+
+parkingSpotModel.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC"))); seta a data do registro 
+
+- retorna a resposta: 
+ResponseEntity.status(HttpStatus.CREATED
+body(parkingSpotService.save(parkingSpotModel)); é passado o retorno do método save
+
+- criar o método save que recebe parkingSpotModel e retorna o contato salvo
+
+- prar isso com o mouse em cima de "save" clicar em "created method save"  in ParkingSpotService
+
+- mudar o retorno do método para "ParkingSpotModel" e retornar o ponto de injeção do repository
+
+- anotar com @Transactional tem que importar 
+import javax.transaction.Transactional;
+
+- ficará assim: 
+
+@Transactional
+public ParkingSpotModel save(ParkingSpotModel parkingSpotModel) {
+       return parkingSpotRepository.save(parkingSpotModel);
+    }
+
+* 12 - rodar aplicação para ver se criou a tabela e abrir o postman
+- selecionar "POST"  e passar a URL de conexão "http://localhost:8080/parking-spot"
+
+- selecionar body, raw e de Text para JSON
+- em body setar os campos do registro
+
+{ "parkingSpotNumber": "1234",
+  "licensePlateCar": "ABC4567,
+   "brandCar": "Renault,
+   "modelCar": "Twingo"
+   "colorCar":"black",
+   "responsibleName":"André Rosa de Matos",
+   "apartment":"247",
+  "block": "A"
+}
+
+- send para enviar e ver se esta salvando
+
+
+*13 - em controller no método post
+criar validações antes de salvar
+
+- ficará assim:
+
+package com.api.parkingcontrol.controllers;
+
+import com.api.parkingcontrol.dtos.ParkingSpotDto;
+import com.api.parkingcontrol.models.ParkingSpotModel;
+import com.api.parkingcontrol.services.ParkingSpotService;
+import org.springframework.beans.BeanUtils;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+
+@RestController
+@CrossOrigin(origins = "*", maxAge = 3600)
+@RequestMapping("/parking-spot")
+public class ParkingSpotController {
+    final ParkingSpotService parkingSpotService;
+
+    public ParkingSpotController(ParkingSpotService parkingSpotService) {
+        this.parkingSpotService = parkingSpotService;
+    }
+
+    @PostMapping
+    public ResponseEntity<Object> saveParkingSpot(@RequestBody @Valid ParkingSpotDto parkingSpotDto){
+       if(parkingSpotService.existsByLicensePlateCar(parkingSpotDto.getLicensePlateCar())){
+           return ResponseEntity.status(HttpStatus.CONFLICT).body("Atenção! Está placa ja está cadastrada!");
+       }
+       if(parkingSpotService.existsByParkingSpotNumber(parkingSpotDto.getParkingSpotNumber())){
+           return  ResponseEntity.status(HttpStatus.CONFLICT).body("Atenção! Número da vaga já está sendo usado!");
+       }
+       if(parkingSpotService.existsByApartmentAndBlock(parkingSpotDto.getApartment(), parkingSpotDto.getBlock(), parkingSpotDTO.getBlock())){
+           return  ResponseEntity.status(HttpStatus.CONFLICT).body("Atenção! Este apartamento ja contem uma vaga registrada!" );
+       }
+
+        var parkingSpotModel = new ParkingSpotModel();
+        BeanUtils.copyProperties(parkingSpotDto, parkingSpotModel);
+        parkingSpotModel.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        return  ResponseEntity.status(HttpStatus.CREATED).body(parkingSpotService.save(parkingSpotModel));
+    }
+}
+
+
+*14 - em service com o mouse em cima do nome do método, criar os métodos:
+"existsByLicensePlateCar" 
+"existsByParkingSpotNumber"
+"existsByApartmentAndBlock"
+
+- declarar os métodos no repository
+
+@Repository
+public interface ParkingSpotRepository extends JpaRepository<ParkingSpotModel, UUID> {
+    boolean existsByLicensePlateCar(String licensePlateCar);
+    boolean existsByParkingSpotNumber(String parkingSpotNumber);
+
+    boolean existsByApartmentAndBlock(String apartment, String block);
+}
+
+
+- voltar ao service e retornar 
+ 
+
+  public boolean existsByLicensePlateCar(String licensePlateCar) {
+        return parkingSpotRepository.existsByLicensePlateCar(licensePlateCar);
+    }
+
+    public boolean existsByParkingSpotNumber(String parkingSpotNumber) {
+        return parkingSpotRepository.existsByParkingSpotNumber(parkingSpotNumber);
+    }
+
+    public boolean existsByApartmentAndBlock(String apartment, String block) {
+        return parkingSpotRepository.existsByApartmentAndBlock(apartment);
+    }
+
+ 
+*15 - rodar aplicação para ver se salva no banco
+
+{   "parkingSpotNumber": "0008",
+    "licensePlateCar": "MEJ3409",
+    "brandCar": "Volkswagen",
+    "modelCar": "GOL",
+    "colorCar": "preto",
+    "responsibleName": "André Rosa de Matos",
+    "apartment": "268",
+    "block": "B"
+}
+
+
+
+
+
+
+
+
+16* - criar método getAllParkingSpots para listar todos os registros
+
+- anotar com @GetMapping vai enviar o "/parking-spot" para obter a listagem, 
+na hora que enviar vai acionar o método 
+"getAllParkingSpots "
+
+- ResponseEntity vai retornar uma listagem 
+com os models
+
+-ficará assim:
+
+ @GetMapping
+    public ResponseEntity<List<ParkingSpotModel>> getAllParkingSpots(){
+        return ResponseEntity.status(HttpStatus.ok).body(parkingSpotService.findAll());
+    }
+
+
+- criar o método "findAll" em service
+
+ficará assim:
+
+public List<ParkingSpotModel> findAll() {
+        return parkingSpotRepository.findAll();
+    }
+
+
+- rodar aplicação para testar
+- no postman selecionar Get e dar send para ver se aparece os registros
+
+
+17* criar o método getOneParkingSpot para buscar por id
+
+-GetMapping("/{id}") o id será passado junto com a uri "parking-spot"
+
+- ResponseEntit<Object> returna um objeto
+- @PathVariable(value = "id") 
+- UUID id tipo do id
+- findBId faz a pesquisa e retorna um optional de parkingSpotModel
+
+ficará assim:
+
+@GetMapping("/{id}")
+    public ResponseEntity<Object> getOneParkingSpot(@PathVariable(value = "id") UUID id){
+        Optional<ParkingSpotModel> parkingSpotModelOptional = parkingSpotService.findById(id);
+        if(!parkingSpotModelOptional.isPresent()){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado!");
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(parkingSpotModelOptional.get());
+    }
+
+- no service:
+
+public Optional<ParkingSpotModel> findById(UUID id) {
+
+        return parkingSpotRepository.findById(id);
+    }
+
+
+- testar
+- na uri passar o id junto, exemplo : 
+http://localhost:8080/parking-spot/8266dd65-dff6-49c7-9bdf-c4170da6d6ae
+
+---------------------------------------
+
+18* método delete
+-receber o id que será deletado e verifica se esse id existe ou não 
+
+- ficará assim:  
+
+ @DeleteMapping("/{id}")
+    public ResponseEntity<Object> deleteParkingSpot(@PathVariable(value = "id") UUID id){
+        Optional<ParkingSpotModel> parkingSpotModelOptional = parkingSpotService.findById(id);
+        if(!parkingSpotModelOptional.isPresent()){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado!");
+        }
+        parkingSpotService.delete(parkingSpotModelOptional.get());
+        return ResponseEntity.status(HttpStatus.OK).body("Registro excluido com sucesso!");
+    }
+
+
+
+- em service:
+@Transactional
+
+public void delete(ParkingSpotModel parkingSpotModel) {
+        parkingSpotRepository.delete(parkingSpotModel);
+    }
+
+
+-testar
+
+
+
+*19 - método updateParkingSPot
+
+- facará assim:
+
+
+@PutMapping("/{id}")
+    public ResponseEntity<Object> updateParkingSpotNumber(@PathVariable(value="id") UUID id, @RequestBody @Valid ParkingSpotDTO parkingSpotDTO){
+        Optional<ParkingSpotModel> parkingSpotModelOptional = parkingSpotService.findById(id);
+        if(!parkingSpotModelOptional.isPresent()){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Registro não encontrado!");
+        }
+        var parkingSpotModel = parkingSpotModelOptional.get();
+        parkingSpotModel.setParkingSpotNumber(parkingSpotDTO.getParkingSpotNumber());
+        parkingSpotModel.setLicensePlateCar(parkingSpotDTO.getLicensePlateCar());
+        parkingSpotModel.setModelCar(parkingSpotDTO.getModelCar());
+        parkingSpotModel.setBrandCar(parkingSpotDTO.getBrandCar());
+        parkingSpotModel.setColorCar(parkingSpotDTO.getColorCar());
+        parkingSpotModel.setResponsibleName(parkingSpotDTO.getResponsibleName());
+        parkingSpotModel.setApartment(parkingSpotDTO.getApartment());
+        parkingSpotModel.setBlock(parkingSpotDTO.getBlock());
+        return ResponseEntity.status(HttpStatus.OK).body(parkingSpotService.save(parkingSpotModel));
+    }
+
+
+
+outra maneira que pode ser feito é 
+ao invés de setar todos os campos é 
+instanciar um novo objeto de ParkingSpotModel e fazer a conversao com BeanUtils passando o Dto para model
+setar apenas o id para permanecer o mesmo e tambem a data de registro 
+
+ficará assim:
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Object> updateParkingSpotNumber(@PathVariable(value="id") UUID id, @RequestBody @Valid ParkingSpotDTO parkingSpotDTO){
+        Optional<ParkingSpotModel> parkingSpotModelOptional = parkingSpotService.findById(id);
+        if(!parkingSpotModelOptional.isPresent()){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Registro não encontrado!");
+        }
+        var parkingSpotModel = new ParkingSpotModel();
+        BeanUtils.copyProperties(parkingSpotDTO, parkingSpotModel);
+        parkingSpotModel.setId(parkingSpotModelOptional.get().getId());
+        parkingSpotModel.setRegistrationDate((parkingSpotModelOptional.get().getRegistrationDate()));
+        return ResponseEntity.status(HttpStatus.OK).body(parkingSpotService.save(parkingSpotModel));
+    }
+
+
+- testar
+
+*20 - configurar formato da data
+-criar o package e configurações "config" 
+-Anotar com @Configuration
+-ficará assim:
+
+
+
+
+
+
+
+
+
+
