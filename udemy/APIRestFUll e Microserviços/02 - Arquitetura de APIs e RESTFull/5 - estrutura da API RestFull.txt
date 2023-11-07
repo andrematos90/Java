@@ -1,0 +1,57 @@
+A pasta src e o arquivo pom.xml são elementos importantes em uma aplicação Spring Boot, especialmente quando se utiliza o Maven como gerenciador de dependências e construção de projetos. Aqui está uma explicação de cada um:
+
+Pasta src:
+A pasta src é uma pasta fundamental em um projeto Spring Boot, e ela geralmente contém os principais códigos-fonte e recursos da aplicação. Dentro da pasta src, você geralmente encontrará as seguintes subpastas:
+
+src/main/java: Esta pasta contém o código-fonte principal da aplicação Spring Boot. É onde você coloca suas classes Java, controladores, serviços, modelos de dados e outros componentes da aplicação.
+
+src/main/resources: Aqui, você pode colocar recursos estáticos, como arquivos de propriedades, configurações, arquivos de template, arquivos de imagem e outros recursos que sua aplicação possa necessitar.
+
+src/test: Esta pasta contém os testes da sua aplicação. Você pode escrever testes unitários e de integração aqui para garantir que sua aplicação funcione corretamente.
+
+Arquivo pom.xml:
+O arquivo pom.xml é um arquivo de configuração do projeto Maven (Project Object Model) que descreve as dependências do projeto, as configurações do projeto e outros detalhes de construção. No contexto de um projeto Spring Boot, o pom.xml é essencial para a definição das dependências do Spring Boot e para a configuração do projeto. Aqui estão alguns elementos importantes encontrados no pom.xml:
+
+<dependencies>: Esta seção do pom.xml lista todas as dependências do projeto, como bibliotecas, frameworks e módulos necessários para a sua aplicação. No caso do Spring Boot, você especificará as dependências do Spring, como Spring Core, Spring MVC, Spring Data, etc., além de outras bibliotecas necessárias.
+
+<build>: Esta seção define as configurações de compilação do projeto, incluindo o formato do arquivo de saída (geralmente um JAR ou um WAR), os plugins Maven a serem utilizados e outras configurações relacionadas à compilação e empacotamento da aplicação.
+
+<properties>: Aqui, você pode definir propriedades personalizadas do projeto que podem ser usadas em todo o pom.xml, como a versão do Spring Boot, a versão do Java, a versão do Maven, entre outras.
+
+<parent>: No caso de um projeto Spring Boot, o pom.xml geralmente herda de um POM pai fornecido pelo Spring Boot, que fornece configurações padrão e gerencia as dependências do Spring Boot.
+
+A pasta main e suas subpastas são uma parte importante da estrutura de diretórios de um projeto Spring Boot. Elas desempenham um papel fundamental na organização do código-fonte e dos recursos da aplicação. Aqui estão as subpastas e arquivos típicos que você encontraria dentro da pasta main:
+
+src/main/java:
+
+Esta pasta contém o código-fonte Java principal da sua aplicação Spring Boot. Aqui é onde você cria classes, controladores, serviços, modelos de dados e outros componentes da aplicação. O código-fonte Java geralmente segue uma estrutura de pacotes que reflete a organização lógica do projeto.
+src/main/resources:
+
+Nesta pasta, você coloca os recursos estáticos e de configuração da sua aplicação Spring Boot. Isso pode incluir:
+Arquivos de propriedades (como application.properties ou application.yml) para configuração.
+Arquivos de template (por exemplo, arquivos Thymeleaf ou FreeMarker).
+Arquivos de imagem, JavaScript e CSS.
+Arquivos de mensagens internacionalizadas.
+Arquivos de configuração de log (por exemplo, logback.xml).
+Outros recursos estáticos que sua aplicação possa necessitar.
+src/main/webapp (opcional):
+
+Se você estiver desenvolvendo uma aplicação web clássica (por exemplo, usando Spring MVC), esta pasta pode conter recursos da web, como arquivos JSP, páginas HTML, CSS e JavaScript. No entanto, em projetos Spring Boot mais modernos, esse diretório não é usado com frequência, pois as aplicações web podem ser criadas usando o Spring Boot incorporando um servidor da web incorporado (por exemplo, Tomcat) e usando controladores Java no pacote src/main/java.
+src/main/config (opcional):
+
+Esta pasta é usada para armazenar arquivos de configuração adicionais específicos do aplicativo, caso necessário. Ela não é uma pasta padrão, mas você pode criá-la se precisar de uma organização adicional para arquivos de configuração.
+src/main/application.properties ou src/main/application.yml (opcional):
+
+Estes arquivos são usados para configurar as propriedades da aplicação, como configurações de banco de dados, portas do servidor, configurações de segurança e muito mais. Você pode escolher usar o formato .properties ou .yml com base em suas preferências.
+Em resumo, a pasta main é uma parte fundamental da estrutura de diretórios de um projeto Spring Boot, pois contém o código-fonte, os recursos e as configurações essenciais para a sua aplicação. A organização e o conteúdo exatos podem variar dependendo do tipo e das necessidades específicas do seu projeto.
+
+
+esquema de uma API RestFull
+
+Model:
+    Produto: id, nome, qunatidade, valor, observação
+
+Repositorio:
+    contem os métodos que interagem com o banco
+    ex: obterTodos, obterPorId, adicionar, atualizmatCardAvatar
+
