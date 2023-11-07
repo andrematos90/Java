@@ -53,5 +53,5 @@ Model:
 
 Repositorio:
     contem os métodos que interagem com o banco
-    ex: obterTodos, obterPorId, adicionar, atualizmatCardAvatar
+    ex: obterTodos, obterPorId, adicionar, atualizar, deletar
 
