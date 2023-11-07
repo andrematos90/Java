@@ -1,0 +1,15 @@
+Uma API RESTful (Representational State Transfer) é um estilo arquitetural de projeto de serviços da web que utiliza os princípios e padrões da web para criar uma interface de programação de aplicativo (API) que é eficiente, escalável, simples e fácil de usar. A sigla "REST" foi cunhada por Roy Fielding em sua tese de doutorado em 2000 e descreve as características que definem esse estilo de arquitetura. Alguns dos princípios-chave de uma API RESTful incluem:
+
+Recursos (Resources): Os dados são representados como recursos, que podem ser objetos, informações ou serviços, e cada recurso é identificado por um URL (Uniform Resource Locator).
+
+Operações baseadas em HTTP: Uma API RESTful utiliza os métodos HTTP padrão, como GET (para recuperar informações), POST (para criar novos recursos), PUT (para atualizar recursos) e DELETE (para remover recursos) para executar operações nos recursos.
+
+Estado (Stateless): Cada solicitação para o servidor deve conter todas as informações necessárias para entender e processar a solicitação. O servidor não mantém informações de estado da sessão do cliente entre solicitações.
+
+Representações: Os recursos podem ter várias representações, como JSON, XML ou HTML. Os clientes solicitam a representação desejada do recurso por meio do cabeçalho "Accept" da solicitação.
+
+Links (HATEOAS - Hypermedia as the Engine of Application State): A API pode incluir links ou URLs para outras ações ou recursos relacionados em suas respostas, permitindo a descoberta dinâmica das funcionalidades disponíveis.
+
+Estrutura de URIs (Uniform Resource Identifiers): A estrutura das URLs é organizada de forma hierárquica e intuitiva, refletindo a organização lógica dos recursos.
+
+APIs RESTful são amplamente utilizadas em desenvolvimento web e são uma escolha comum para criar serviços da web que se comunicam via HTTP. Elas são consideradas simples de entender e implementar, o que as torna populares em muitos contextos, incluindo aplicativos web, serviços da web, aplicativos móveis e muito mais. Além disso, as APIs RESTful são independentes de linguagem e plataforma, o que facilita a integração com diversas tecnologias.

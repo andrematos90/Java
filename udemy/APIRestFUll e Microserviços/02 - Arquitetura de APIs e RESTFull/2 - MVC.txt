@@ -1,0 +1,78 @@
+MVC é a sigla para Model-View-Controller, um padrão de arquitetura de software amplamente utilizado no desenvolvimento de aplicativos de software, especialmente em aplicações web e de desktop. O objetivo principal do padrão MVC é separar a lógica de negócios, a apresentação e a interação do usuário em componentes distintos, proporcionando assim uma estrutura organizada para o desenvolvimento de software. O padrão é composto pelos seguintes componentes:
+
+Model (Modelo):
+
+O Modelo representa a camada de dados e lógica de negócios do aplicativo. Ele é responsável por gerenciar os dados, regras de negócios e a interação com o banco de dados. O Modelo é independente da interface do usuário e não sabe como os dados serão exibidos.
+View (Visualização):
+
+A Visualização é a camada de apresentação do aplicativo. Ela é responsável por exibir os dados ao usuário e fornecer a interface com a qual o usuário interage. A Visualização não contém lógica de negócios; ela apenas apresenta os dados do Modelo ao usuário.
+Controller (Controlador):
+
+O Controlador age como um intermediário entre o Modelo e a Visualização. Ele lida com as solicitações do usuário, processa essas solicitações, interage com o Modelo para obter ou atualizar dados e atualiza a Visualização para refletir as alterações. O Controlador contém a lógica de fluxo de controle e toma decisões com base nas interações do usuário.
+O padrão MVC promove a separação de responsabilidades e a modularização do código, tornando o desenvolvimento e a manutenção de aplicativos mais organizados e escaláveis. Ele também facilita a colaboração em equipe, pois diferentes desenvolvedores podem trabalhar em componentes específicos sem afetar diretamente o código de outros componentes.
+
+Embora o padrão MVC seja frequentemente associado a aplicativos da web, ele também é aplicável a aplicativos de desktop, aplicativos móveis e outros tipos de sistemas de software. Diversos frameworks e bibliotecas, como Ruby on Rails, Django (para Python), Angular, React e Vue.js (para JavaScript), implementam o padrão MVC ou variações dele para simplificar o desenvolvimento de aplicativos.
+
+
+Controller
+
+O Controller, na arquitetura MVC (Model-View-Controller), é um dos três componentes principais do padrão arquitetural. Ele desempenha um papel fundamental na coordenação das interações entre o Modelo (Model) e a Visualização (View). O Controller é responsável por receber solicitações do usuário, processá-las, interagir com o Modelo para buscar ou atualizar dados e, em seguida, atualizar a Visualização para refletir essas alterações. Em resumo, o Controller atua como um intermediário que controla o fluxo de informações e ações entre o Modelo e a Visualização.
+
+Aqui estão algumas das principais responsabilidades de um Controller em uma arquitetura MVC:
+
+Receber e interpretar solicitações do usuário: O Controller recebe as ações e solicitações do usuário, geralmente por meio de eventos, como cliques de botões, envio de formulários ou interações de entrada.
+
+Processar as solicitações: Com base nas ações do usuário, o Controller toma decisões sobre como proceder. Isso pode envolver a validação dos dados de entrada, a execução de operações no Modelo ou a consulta de dados.
+
+Interagir com o Modelo: O Controller interage com o Modelo para buscar informações, atualizar dados ou executar lógica de negócios. Ele solicita operações no Modelo e recebe respostas.
+
+Atualizar a Visualização: Após a interação com o Modelo, o Controller atualiza a Visualização para refletir as mudanças. Isso pode envolver a atualização de elementos da interface do usuário, a exibição de mensagens de feedback ou a navegação para outras páginas.
+
+Gerenciar o fluxo de controle: O Controller controla o fluxo de informações e ações no aplicativo, decidindo como responder a diferentes eventos e ações do usuário.
+
+Manter a independência entre Modelo e Visualização: Um dos objetivos do Controller é manter a separação estrita entre o Modelo e a Visualização, garantindo que a lógica de negócios (Modelo) não esteja diretamente acoplada à apresentação (Visualização).
+
+O uso de um Controller em uma arquitetura MVC contribui para a modularização do código e torna o desenvolvimento e a manutenção mais organizados. Ele também facilita a reutilização de componentes e a colaboração em equipe, pois diferentes desenvolvedores podem trabalhar em partes específicas do aplicativo sem afetar diretamente o código de outras partes.
+
+
+Service
+
+
+
+Service (Serviço):
+
+O serviço é uma camada intermediária que contém a lógica de negócios da aplicação.
+Ele é responsável por realizar tarefas específicas, como validações, cálculos, manipulação de dados e interações com o banco de dados.
+Os serviços encapsulam a lógica de negócios para garantir que ela seja reutilizável e independente de interfaces de usuário ou métodos de acesso a dados.
+
+
+Repositorie
+
+Repository (Repositório):
+
+O repositório é responsável por interagir com a camada de acesso a dados, geralmente um banco de dados.
+Ele fornece uma interface para realizar operações de leitura e gravação de dados no banco de dados, como buscar, criar, atualizar e excluir registros.
+Os repositórios abstraem os detalhes de como os dados são armazenados, permitindo que a lógica de negócios trabalhe com objetos de domínio em vez de consultas SQL diretas ou chamadas de API de banco de dados.
+
+
+Model
+
+O "Model" é a terceira parte do padrão arquitetural MVC (Model-View-Controller) e desempenha um papel fundamental na organização de uma aplicação. O Model representa os dados e a lógica de negócios da aplicação. Aqui está uma explicação mais detalhada sobre o Model:
+
+Model:
+
+O Model é a camada que representa os dados subjacentes da aplicação, bem como a lógica de negócios associada a esses dados.
+Ele pode incluir classes que definem a estrutura e o comportamento dos objetos de domínio da aplicação. Isso inclui entidades como usuários, produtos, pedidos, etc.
+Além de definir a estrutura dos dados, o Model também pode conter métodos e regras de negócios que são aplicadas a esses dados. Por exemplo, validações de dados, cálculos, transformações e lógica de processamento são frequentemente implementados nesta camada.
+O Model é independente da interface do usuário (View) e da lógica de coordenação (Controller), o que significa que ele pode ser reutilizado em diferentes partes da aplicação, promovendo a reutilização de código e a manutenção mais fácil.
+Em resumo, o Model é responsável por representar os dados e a lógica de negócios subjacentes da aplicação. Ele age como o cerne da aplicação e oferece uma camada abstrata que é acessada e manipulada pela camada de serviço (Service) e, por sua vez, pela camada de controle (Controller). Isso ajuda a manter uma separação clara de responsabilidades e
+facilita a manutenção e expansão da aplicação.
+
+
+Esses componentes trabalham juntos para criar uma separação clara de
+responsabilidades em uma aplicação, o que torna o código mais organizado,
+ modular e fácil de manter. O controller lida com a interação do usuário, o
+ serviço gerencia a lógica de negócios e o repositório gerencia o acesso aos dados.
+ Essa abordagem é especialmente útil em aplicativos de médio e grande porte, onde a
+  complexidade da lógica de negócios e a interação com o banco de dados podem ser
+  desafiadoras de gerenciar sem essa estrutura.

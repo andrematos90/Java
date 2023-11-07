@@ -1,0 +1,19 @@
+Microserviços são um estilo de arquitetura de software que envolve a construção de um sistema de software como um conjunto de serviços independentes e pequenos, em vez de como um único monólito. Cada microserviço é uma unidade de desenvolvimento, implantação e escalabilidade separada, e cada serviço é responsável por uma funcionalidade específica da aplicação. Esses serviços se comunicam entre si por meio de APIs (interfaces de programação de aplicativos) e protocolos de rede.
+
+Características comuns dos microserviços incluem:
+
+Independência: Cada microserviço é desenvolvido, implantado e mantido de forma independente. Isso permite que equipes trabalhem em serviços diferentes sem afetar uns aos outros.
+
+Foco em uma única funcionalidade: Cada microserviço se concentra em uma única funcionalidade ou conjunto de funcionalidades da aplicação. Isso resulta em serviços pequenos e especializados.
+
+Comunicação via APIs: Os microserviços se comunicam entre si por meio de APIs, geralmente usando protocolos de comunicação como HTTP/REST ou gRPC. Isso facilita a integração entre os serviços.
+
+Escalabilidade granular: A escalabilidade é alcançada de forma granular, permitindo que apenas os serviços que requerem mais recursos sejam escalados, em vez de escalonar toda a aplicação.
+
+Facilidade de implantação e atualização: A implantação e atualização de microserviços individuais é mais simples em comparação com monólitos, pois não é necessário implantar a aplicação inteira.
+
+Tolerância a falhas: Os microserviços são projetados para serem resilientes a falhas. Se um serviço falhar, ele não deve derrubar toda a aplicação.
+
+Gerenciamento de dados independente: Cada microserviço pode escolher o banco de dados que melhor atende às suas necessidades, permitindo escolhas independentes de tecnologia.
+
+Microserviços são frequentemente adotados para desenvolver aplicativos escaláveis, flexíveis e fáceis de manter. Eles permitem que organizações dividam suas equipes em unidades menores, cada uma responsável por um conjunto específico de serviços. No entanto, a adoção de microserviços também traz desafios, como a complexidade na coordenação entre os serviços e a necessidade de uma infraestrutura robusta para monitoramento e gerenciamento. Portanto, a decisão de usar microserviços deve ser ponderada com base nas necessidades e recursos da organização.
