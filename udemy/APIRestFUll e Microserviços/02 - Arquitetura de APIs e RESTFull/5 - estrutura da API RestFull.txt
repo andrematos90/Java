@@ -55,3 +55,9 @@ Repositorio:
     contem os métodos que interagem com o banco
     ex: obterTodos, obterPorId, adicionar, atualizar, deletar
 
+Serviço de produto:
+    pede para o repositorio "resolver os metodos"
+     obterTodos, obterPorId, adicionar, atualizar, deletar
+     pode ter ou não regra de negocio
+
+
