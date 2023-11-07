@@ -1,5 +1,6 @@
 Microserviços são um estilo de arquitetura de software que envolve a construção de um sistema de software como um conjunto de serviços independentes e pequenos, em vez de como um único monólito. Cada microserviço é uma unidade de desenvolvimento, implantação e escalabilidade separada, e cada serviço é responsável por uma funcionalidade específica da aplicação. Esses serviços se comunicam entre si por meio de APIs (interfaces de programação de aplicativos) e protocolos de rede.
 
+
 Características comuns dos microserviços incluem:
 
 Independência: Cada microserviço é desenvolvido, implantado e mantido de forma independente. Isso permite que equipes trabalhem em serviços diferentes sem afetar uns aos outros.
