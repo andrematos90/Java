@@ -7,6 +7,7 @@ Independência: Cada microserviço é desenvolvido, implantado e mantido de form
 
 Foco em uma única funcionalidade: Cada microserviço se concentra em uma única funcionalidade ou conjunto de funcionalidades da aplicação. Isso resulta em serviços pequenos e especializados.
 
+
 Comunicação via APIs: Os microserviços se comunicam entre si por meio de APIs, geralmente usando protocolos de comunicação como HTTP/REST ou gRPC. Isso facilita a integração entre os serviços.
 
 Escalabilidade granular: A escalabilidade é alcançada de forma granular, permitindo que apenas os serviços que requerem mais recursos sejam escalados, em vez de escalonar toda a aplicação.

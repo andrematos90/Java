@@ -12,4 +12,5 @@ Links (HATEOAS - Hypermedia as the Engine of Application State): A API pode incl
 
 Estrutura de URIs (Uniform Resource Identifiers): A estrutura das URLs é organizada de forma hierárquica e intuitiva, refletindo a organização lógica dos recursos.
 
+
 APIs RESTful são amplamente utilizadas em desenvolvimento web e são uma escolha comum para criar serviços da web que se comunicam via HTTP. Elas são consideradas simples de entender e implementar, o que as torna populares em muitos contextos, incluindo aplicativos web, serviços da web, aplicativos móveis e muito mais. Além disso, as APIs RESTful são independentes de linguagem e plataforma, o que facilita a integração com diversas tecnologias.

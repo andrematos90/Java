@@ -1,5 +1,6 @@
 MVC é a sigla para Model-View-Controller, um padrão de arquitetura de software amplamente utilizado no desenvolvimento de aplicativos de software, especialmente em aplicações web e de desktop. O objetivo principal do padrão MVC é separar a lógica de negócios, a apresentação e a interação do usuário em componentes distintos, proporcionando assim uma estrutura organizada para o desenvolvimento de software. O padrão é composto pelos seguintes componentes:
 
+
 Model (Modelo):
 
 O Modelo representa a camada de dados e lógica de negócios do aplicativo. Ele é responsável por gerenciar os dados, regras de negócios e a interação com o banco de dados. O Modelo é independente da interface do usuário e não sabe como os dados serão exibidos.
