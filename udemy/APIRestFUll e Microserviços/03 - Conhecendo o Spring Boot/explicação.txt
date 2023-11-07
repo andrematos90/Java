@@ -1,0 +1,81 @@
+Spring e Spring Boot
+
+O Spring e o Spring Boot são dois projetos relacionados no ecossistema Spring Framework, que é uma plataforma de código aberto amplamente usada para desenvolvimento de aplicativos Java. Ambos têm como objetivo simplificar o desenvolvimento de aplicativos Java, especialmente em ambientes empresariais. 
+
+Spring Framework:
+
+O Spring Framework é um framework de desenvolvimento de aplicativos Java que fornece uma ampla variedade de recursos e funcionalidades para facilitar o desenvolvimento de aplicativos empresariais.
+Ele se baseia no princípio de inversão de controle (IoC) e injeção de dependência, o que significa que o Spring gerencia a criação e a configuração de objetos em seu aplicativo, facilitando a configuração e o teste.
+O Spring oferece módulos para lidar com tarefas comuns, como persistência de dados, segurança, transações, programação assíncrona, integração com sistemas externos e muito mais.
+Além disso, o Spring Framework promove boas práticas de desenvolvimento, como a separação de preocupações, facilitando a manutenção e a escalabilidade dos aplicativos.
+
+
+Spring Boot:
+
+O Spring Boot é um projeto do ecossistema Spring que visa simplificar a configuração e o desenvolvimento de aplicativos Spring. Ele é projetado para acelerar o processo de criação de aplicativos prontos para produção.
+Com o Spring Boot, muitas das configurações e decisões que os desenvolvedores costumavam ter que fazer manualmente são automatizadas por meio de convenções sensatas e padrões de configuração sensíveis ao contexto.
+O Spring Boot inclui incorporado em seu ecossistema um servidor de aplicação incorporado (como o Tomcat, Jetty ou Undertow), que facilita a implantação e execução de aplicativos de forma autônoma, sem a necessidade de configurações complexas.
+Além disso, o Spring Boot fornece um conjunto de ferramentas para criar aplicativos autocontidos, empacotados com todas as dependências necessárias, tornando a implantação mais fácil.
+Em resumo, o Spring Framework é uma estrutura de desenvolvimento Java abrangente que oferece uma ampla gama de funcionalidades para aplicativos empresariais, enquanto o Spring Boot é uma extensão desse framework que simplifica a configuração e o desenvolvimento de aplicativos Spring, tornando a criação de aplicativos Java mais rápida e fácil, especialmente para aplicativos autônomos e prontos para produção. O Spring Boot é frequentemente usado para criar serviços web, APIs REST, aplicativos web e microserviços devido à sua simplicidade e eficiência.
+
+
+Dependências
+
+
+
+Em um projeto Spring Boot, as dependências são bibliotecas e módulos que você inclui em seu aplicativo para adicionar funcionalidades específicas. O Spring Boot é construído em cima do Spring Framework e foi projetado para simplificar o desenvolvimento de aplicativos Spring, automatizando grande parte da configuração. Para adicionar funcionalidades adicionais ao seu aplicativo Spring Boot, você pode usar dependências específicas fornecidas pelo ecossistema Spring.
+
+O Spring Boot usa o sistema de gerenciamento de dependências Apache Maven ou o Gradle para adicionar e gerenciar essas dependências. As dependências são listadas em um arquivo de configuração (pom.xml para o Maven ou build.gradle para o Gradle) e são baixadas automaticamente da Internet para o seu projeto durante o processo de construção.
+
+As dependências Spring Boot são organizadas em "starter" dependencies (dependências iniciadoras) que fornecem conjuntos específicos de funcionalidades com base em casos de uso comuns. Alguns exemplos de starters do Spring Boot incluem:
+
+spring-boot-starter-web: Fornece funcionalidades para construir aplicativos web, incluindo suporte a Spring MVC, servidor incorporado e muito mais.
+
+spring-boot-starter-data-jpa: Oferece suporte para persistência de dados usando o Spring Data JPA, que é uma abstração para interagir com bancos de dados relacionais.
+
+spring-boot-starter-security: Adiciona recursos de segurança, como autenticação e autorização, ao seu aplicativo.
+
+spring-boot-starter-test: Inclui dependências para testes, como JUnit e Spring Test.
+
+spring-boot-starter-actuator: Fornece recursos de monitoramento e gerenciamento para aplicativos, como métricas, informações sobre saúde e muito mais.
+
+Você pode escolher os starters apropriados para o seu projeto com base nas funcionalidades necessárias e incluí-los em seu arquivo de configuração de dependências. O Spring Boot simplifica a configuração e a inicialização dessas dependências, permitindo que você se concentre na lógica de negócios do seu aplicativo, sem se preocupar com a configuração detalhada desses componentes.
+
+outras:
+
+Spring Web:
+
+Spring Web é uma parte do ecossistema Spring que fornece suporte para o desenvolvimento de aplicativos web.
+Ele inclui o Spring MVC, que é um framework para a construção de aplicativos web baseados em modelo-view-controller (MVC). O Spring MVC ajuda a criar controladores web, mapear URLs para métodos de controlador, gerenciar solicitações HTTP e muito mais.
+Com o Spring Web, você pode criar aplicativos web de forma mais organizada e modular, separando a lógica de negócios, a camada de visualização e o controle de maneira eficiente.
+Validation (Validação):
+
+A validação refere-se ao processo de verificar se os dados inseridos em um sistema atendem aos critérios especificados. No contexto do Spring, a validação é frequentemente usada para garantir que os dados de entrada do usuário sejam corretos e seguros.
+O Spring Framework oferece suporte à validação de dados com base em anotações, como @NotNull, @Size, @Email, etc. Isso permite que você valide objetos antes de processá-los, garantindo a integridade dos dados.
+Spring Boot DevTools:
+
+O Spring Boot DevTools é uma coleção de ferramentas que tornam o desenvolvimento de aplicativos Spring Boot mais produtivo.
+Ele fornece recursos como reinicialização automática do aplicativo quando você faz alterações no código-fonte, atualização automática de modelos e configurações sem reinicializar o aplicativo e muito mais.
+O Spring Boot DevTools é útil durante o desenvolvimento, pois acelera o ciclo de desenvolvimento, permitindo que você veja as alterações em tempo real sem reinicializar manualmente o aplicativo.
+PostgreSQL Driver:
+
+O PostgreSQL Driver refere-se à biblioteca que permite que o aplicativo Java se conecte e interaja com um banco de dados PostgreSQL.
+No contexto do Spring, é comum usar um driver JDBC (Java Database Connectivity) para PostgreSQL para acessar e manipular os dados em um banco de dados PostgreSQL a partir de um aplicativo Spring.
+Spring Data JPA:
+
+O Spring Data JPA é uma parte do Spring Framework que fornece uma camada de acesso a dados de alto nível e simplifica a interação com bancos de dados relacionais usando a tecnologia JPA (Java Persistence API).
+Com o Spring Data JPA, você pode criar repositórios de dados e consultar dados de forma mais eficiente, sem escrever consultas SQL manualmente. Ele usa o mecanismo de consulta JPA para gerar consultas SQL a partir de métodos de repositório definidos pelo desenvolvedor.
+O Spring Data JPA é frequentemente usado em conjunto com o Spring Boot para criar aplicativos que acessam bancos de dados relacionais de forma simples e eficaz.
+
+
+Em resumo, as dependências em um projeto Spring Boot são bibliotecas pré-configuradas que fornecem funcionalidades específicas, permitindo que você desenvolva aplicativos mais rapidamente e com menos esforço de configuração.
+
+
+
+
+
+
+
+
+
+
