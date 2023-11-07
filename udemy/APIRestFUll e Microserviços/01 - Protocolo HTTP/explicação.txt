@@ -1,0 +1,24 @@
+*Comunicacao entre backend e front end
+
+
+A comunicação entre o frontend (a parte visível e interativa de um aplicativo ou site) e o backend (a parte do servidor que lida com a lógica de negócios e o processamento de dados) é essencial em muitos sistemas de software. Ela permite que o frontend solicite informações, envie dados e interaja com o backend para fornecer funcionalidade aos usuários. Existem várias maneiras de realizar essa comunicação, e uma das mais comuns é através de APIs (Interfaces de Programação de Aplicativos). Aqui está uma visão geral de como a comunicação entre o frontend e o backend acontece:
+
+Solicitação HTTP:
+
+O frontend geralmente inicia a comunicação fazendo uma solicitação HTTP para um endpoint específico no backend. Essa solicitação pode ser uma solicitação GET para buscar dados, uma solicitação POST para enviar dados, ou outros tipos de solicitações HTTP, dependendo da ação desejada.
+Roteamento:
+
+O servidor backend recebe a solicitação e roteia-a para o controlador ou rota apropriada, que contém a lógica para processar a solicitação. O roteamento é geralmente baseado na URL da solicitação e no método HTTP utilizado.
+Processamento:
+
+O controlador no backend processa a solicitação, realiza as operações necessárias, acessa o banco de dados, executa a lógica de negócios, etc. Isso pode envolver a validação de dados, a recuperação de informações, a execução de cálculos e muito mais.
+Resposta:
+
+Após o processamento, o backend gera uma resposta, geralmente no formato JSON ou XML, que contém os dados a serem fornecidos ao frontend. A resposta é enviada de volta ao frontend como parte da resposta HTTP.
+Processamento no Frontend:
+
+O frontend recebe a resposta do backend e a processa. Isso pode envolver a exibição de dados para o usuário, a atualização da interface do usuário, a manipulação de erros ou qualquer outra ação necessária com base na resposta recebida.
+Interação Contínua:
+
+A comunicação entre o frontend e o backend pode ser contínua e interativa, com o frontend enviando solicitações adicionais conforme o usuário interage com o aplicativo. O processo de solicitação e resposta se repete conforme necessário para atender às necessidades da aplicação.
+A comunicação entre o frontend e o backend é essencial para o funcionamento de aplicativos da web e sistemas de software. A escolha das tecnologias e protocolos utilizados, como REST, GraphQL, WebSocket, ou outros, depende das necessidades específicas do projeto e das preferências de desenvolvimento.
