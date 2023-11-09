@@ -61,3 +61,5 @@ Serviço de produto:
      pode ter ou não regra de negocio
 
 
+controller: 
+ obterTodos, obterPorId, adicionar, atualizar, deletar
