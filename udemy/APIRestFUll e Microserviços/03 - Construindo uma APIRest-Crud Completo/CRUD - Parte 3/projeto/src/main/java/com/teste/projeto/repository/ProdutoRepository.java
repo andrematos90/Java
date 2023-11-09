@@ -1,6 +1,7 @@
 package com.teste.projeto.repository;
 
 import com.teste.projeto.model.ProdutoModel;
+import com.teste.projeto.model.exception.ResourceNotFounException;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -39,7 +40,7 @@ public class ProdutoRepository {
         Optional<ProdutoModel> produtoEncontrado = obterProdutoPorId(produto.getId());
 
         if(produtoEncontrado.isEmpty()){
-            throw new InputMismatchException("Produto não encotrado!");
+            throw new ResourceNotFounException("Produto não encotrado!");
         }
         deletarProduto(produto.getId());
 
