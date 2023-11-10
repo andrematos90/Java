@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/APIRestFUll e Microserviços/04 - Trabalhando com o PostgreSQL/Conectando API ao PostgreSQL/projeto" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/APIRestFUll e Microserviços/04 - Trabalhando com o PostgreSQL/Conectando API ao PostgreSQL/projeto" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>
