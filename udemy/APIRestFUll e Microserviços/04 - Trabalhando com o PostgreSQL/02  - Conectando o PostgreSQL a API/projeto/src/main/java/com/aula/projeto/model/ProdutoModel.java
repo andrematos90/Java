@@ -1,6 +1,15 @@
 package com.aula.projeto.model;
 
+
+import jakarta.persistence.*;
+
+
+
+@Entity
+@Table(schema = "products")
 public class ProdutoModel {
+    @Id // transforma esse campo em primary key
+    @GeneratedValue(strategy = GenerationType.AUTO) // gera ids automaticamente
     private Integer id;
     private String nomeProduto;
     private Integer quantidade;
