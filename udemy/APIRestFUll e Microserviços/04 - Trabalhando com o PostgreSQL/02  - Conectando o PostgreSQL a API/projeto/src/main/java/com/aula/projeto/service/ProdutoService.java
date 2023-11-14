@@ -3,7 +3,9 @@ package com.aula.projeto.service;
 import com.aula.projeto.model.ProdutoModel;
 import com.aula.projeto.repository.ProdutoRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -13,25 +15,20 @@ public class ProdutoService {
         this.produtoRepository = produtoRepository;
     }
 
-    public ProdutoModel ObterTodosOsProdutos(){
-        return produtoRepository.ObterTodosOsProdutos();
+    public List<ProdutoModel> findAll(){
+        return produtoRepository.findAll();
+    }
+    @Transactional
+    public ProdutoModel save(ProdutoModel produtoModel){
+        return produtoRepository.save(produtoModel);
     }
 
-    public Optional<ProdutoModel> obterProdutoPorId(Integer id){
-        return  produtoRepository.obterProdutoPorId(id);
+    public Optional<ProdutoModel> findById(Integer id) {
+        return produtoRepository.findById(id);
     }
 
-    public ProdutoModel adicionarProduto(ProdutoModel produto){
-        return produtoRepository.adicionarProduto(produto);
+    @jakarta.transaction.Transactional
+    public void delete(ProdutoModel produtoModel) {
+        produtoRepository.delete(produtoModel);
     }
-
-    public void deletarProduto(Integer id){
-        produtoRepository.deletarProduto(id);
-    }
-
-    public ProdutoModel atualizarProduto(ProdutoModel produto){
-        return produtoRepository.atualizarProduto(produto);
-
-    }
-
 }
