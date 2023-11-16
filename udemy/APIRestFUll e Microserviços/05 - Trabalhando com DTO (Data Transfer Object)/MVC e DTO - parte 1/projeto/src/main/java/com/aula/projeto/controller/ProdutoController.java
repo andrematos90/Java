@@ -28,17 +28,18 @@ public class ProdutoController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ProdutoModel>> ObterTodosOsProdutos(){
+    public ResponseEntity<List<ProdutoDTO>> ObterTodosOsProdutos(){
         return ResponseEntity.status(OK).body(produtoService.ObterTodosOsProdutos());
+
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Object> obterProdutoPorId(@PathVariable(value = "id") Integer id){
-        Optional<ProdutoModel> produtoModelOptional = produtoService.obterProdutoPorId(id);
-        if(!produtoModelOptional.isPresent()){
+        Optional<ProdutoDTO> ProdutoDtoOptional = produtoService.obterProdutoPorId(id);
+        if(!ProdutoDtoOptional.isPresent()){
             return  ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado!");
         }
-        return ResponseEntity.status(OK).body(produtoModelOptional.get());
+        return ResponseEntity.status(OK).body(ProdutoDtoOptional.get());
     }
 
     @DeleteMapping("/{id}")
