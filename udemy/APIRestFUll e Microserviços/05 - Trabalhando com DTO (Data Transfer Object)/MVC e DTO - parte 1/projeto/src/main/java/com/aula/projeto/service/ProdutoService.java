@@ -18,7 +18,7 @@ public class ProdutoService {
         this.produtoRepository = produtoRepository;
     }
 
-    public List<ProdutoModel> ObterTodosOsProdutos(){
+    public List<ProdutoDTO> ObterTodosOsProdutos(){
         List<ProdutoDTO> produtoDTO = produtoRepository.findAll();
 
         return produtoModels.stream()
@@ -26,7 +26,7 @@ public class ProdutoService {
                 .collect(Collectors.toList());
     }
     @Transactional
-    public ProdutoModel salvarProduto(ProdutoModel produtoModel){
+    public ProdutoDTO salvarProduto(ProdutoModel produtoModel){
         return produtoRepository.save(produtoModel);
     }
 

@@ -1,3 +1,5 @@
+//ProdutoDTO é que sera usado para transferir dados entre o controller e o service
+
 package com.aula.projeto.dtos;
 
 public class ProdutoDTO {

@@ -1,20 +1,8 @@
-/*ProdutoModel é a entidade do banco de dados é que sera comunicado entre o service
-e o repository,
- entre o service e qualquer outra camada é usado o DTO/*
- */
+//ProdutoRequest recebe os dados do cliente, é o que se sera requirido
 
-package com.aula.projeto.model;
+package com.aula.projeto.view.model;
 
-
-import jakarta.persistence.*;
-
-
-
-@Entity
-@Table(name = "products")
-public class ProdutoModel {
-    @Id // transforma esse campo em primary key
-    @GeneratedValue(strategy = GenerationType.AUTO) // gera ids automaticamente
+public class ProdutoRequest {
     private Integer id;
     private String nomeProduto;
     private Integer quantidade;
@@ -52,3 +40,4 @@ public class ProdutoModel {
         this.valor = valor;
     }
 }
+

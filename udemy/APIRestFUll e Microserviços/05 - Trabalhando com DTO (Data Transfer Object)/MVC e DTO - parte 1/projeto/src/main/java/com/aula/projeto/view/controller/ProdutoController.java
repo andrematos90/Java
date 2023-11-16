@@ -1,4 +1,4 @@
-package com.aula.projeto.controller;
+package com.aula.projeto.view.model.controller;
 
 import com.aula.projeto.dtos.ProdutoDTO;
 import com.aula.projeto.model.ProdutoModel;
@@ -22,9 +22,8 @@ public class ProdutoController {
 
     @PostMapping
     public ResponseEntity<Object> salvaProduto(@RequestBody ProdutoDTO produtoDTO){
-        var produtoModel = new ProdutoModel();
-        BeanUtils.copyProperties(produtoDTO, produtoModel);
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(produtoService.salvarProduto(produtoModel));
+
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(produtoService.salvarProduto(produtoDTO));
     }
 
     @GetMapping
@@ -65,3 +64,5 @@ public class ProdutoController {
     }
 
 }
+
+//controller vai estrabalhar
