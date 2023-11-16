@@ -18,8 +18,8 @@ public class ProdutoService {
         this.produtoRepository = produtoRepository;
     }
 
-    public List<ProdutoDTO> ObterTodosOsProdutos(){
-        List<ProdutoModel> produtoModels = produtoRepository.findAll();
+    public List<ProdutoModel> ObterTodosOsProdutos(){
+        List<ProdutoDTO> produtoDTO = produtoRepository.findAll();
 
         return produtoModels.stream()
                 .map(produto -> new ModelMapper().map(produtoModels, ProdutoDTO.class))

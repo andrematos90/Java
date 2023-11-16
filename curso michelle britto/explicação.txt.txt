@@ -1,0 +1,78 @@
+Conceitos:
+
+Em um projeto Spring, especialmente usando o Spring MVC e o Spring Data JPA, os conceitos de Model, DTO (Data Transfer Object), Service, Controller e Repository desempenham papéis específicos no desenvolvimento da aplicação. Aqui está uma breve descrição de cada um deles:
+
+Model:
+
+No contexto do Spring, o termo "Model" geralmente se refere às entidades de dados que representam os objetos de negócios da aplicação.
+Essas entidades muitas vezes mapeiam diretamente para tabelas em um banco de dados quando o Spring Data JPA é utilizado.
+As classes Model geralmente contêm anotações como @Entity para indicar que são entidades JPA.
+DTO (Data Transfer Object):
+
+DTOs são objetos usados para transferir dados entre as camadas da aplicação, muitas vezes entre a camada de serviço e a camada de controle.
+Eles são úteis para encapsular dados específicos necessários para uma operação e reduzir a quantidade de dados transferidos pela rede.
+DTOs geralmente não contêm lógica de negócios, apenas dados e métodos de acesso.
+Service:
+
+A camada de serviço contém a lógica de negócios da aplicação.
+As classes de serviço geralmente contêm métodos que executam operações específicas relacionadas ao domínio da aplicação.
+Eles orquestram as chamadas ao banco de dados, realizam validações de negócios e interagem com os objetos de modelo.
+Controller:
+
+Os controladores são responsáveis por lidar com as requisições HTTP, interagindo com a camada de serviço para atender às solicitações do cliente.
+Anotados com @Controller ou @RestController, eles mapeiam endpoints HTTP para métodos específicos e manipulam a entrada e saída.
+Os controladores geralmente recebem dados do cliente, chamam métodos nos serviços e retornam os resultados.
+Repository:
+
+A camada de repositório é responsável pela interação com o banco de dados.
+As interfaces de repositório estendem JpaRepository (ou outra interface Spring Data) e fornecem métodos para realizar operações de CRUD (Create, Read, Update, Delete) no banco de dados.
+O Spring Data JPA fornece implementações automáticas para essas interfaces com base nas convenções de nomenclatura dos métodos.
+Essa arquitetura é conhecida como arquitetura em camadas, onde cada camada tem uma responsabilidade específica, facilitando a manutenção e a expansão da aplicação. O Spring Framework fornece suporte robusto para implementar esses conceitos de forma eficiente e coesa.
+
+
+Fluxo de execução:
+
+
+Na arquitetura típica de uma aplicação Spring MVC, a ordem de execução geralmente segue o ciclo de vida da solicitação HTTP. Aqui está uma ordem geral das etapas principais:
+
+1 - Requisição HTTP:
+
+Uma requisição HTTP é feita a um endpoint específico da aplicação.
+
+2 - Controller:
+
+Recebe a requisição HTTP.
+Mapeia a requisição para um método específico dentro do controlador usando anotações como @RequestMapping ou @GetMapping.
+Pode realizar validações iniciais da requisição, como verificar parâmetros, cabeçalhos, etc.
+Prepara e envia a requisição para o serviço correspondente.
+
+
+3 - Service:
+
+Recebe a requisição do controlador.
+Executa a lógica de negócios e manipulações de dados necessárias.
+Pode envolver transações, controle de segurança, e outras lógicas específicas do domínio.
+Geralmente, chama métodos nos repositórios para realizar operações no banco de dados.
+
+
+4 - Repository:
+
+Manipula a comunicação direta com o banco de dados.
+Implementa operações CRUD (Create, Read, Update, Delete) para as entidades do domínio.
+Converte as chamadas de métodos do serviço para consultas SQL ou operações no banco de dados.
+Pode utilizar frameworks de persistência como Hibernate para simplificar as operações com o banco de dados.
+
+5 - Banco de Dados:
+
+Armazena e recupera dados conforme solicitado pelo repositório.
+Pode ser um banco de dados relacional (como MySQL, PostgreSQL) ou NoSQL (como MongoDB) dependendo da escolha de tecnologia.
+Resposta:
+
+O resultado é retornado através do caminho reverso (Repository -> Service -> Controller) até o cliente que fez a requisição HTTP.
+Lembre-se de que esse é um padrão comum, mas o design exato pode variar com base nas necessidades específicas do aplicativo. Em muitos casos, você também pode ter camadas adicionais para lidar com preocupações específicas, como segurança, cache, e transformação de dados. O Spring Framework fornece flexibilidade para adaptar o design da aplicação de acordo com os requisitos específicos.
+
+
+
+
+
+
