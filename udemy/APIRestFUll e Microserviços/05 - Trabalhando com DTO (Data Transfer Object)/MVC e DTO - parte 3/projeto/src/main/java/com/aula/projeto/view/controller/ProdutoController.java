@@ -57,8 +57,6 @@ public class ProdutoController {
           }
     }
 
-
-
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deletarProduto(@PathVariable(value = "id") Integer id){
 
