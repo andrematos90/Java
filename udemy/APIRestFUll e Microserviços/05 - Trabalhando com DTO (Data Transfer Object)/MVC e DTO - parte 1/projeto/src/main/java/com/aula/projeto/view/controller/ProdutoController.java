@@ -1,4 +1,4 @@
-package com.aula.projeto.view.model.controller;
+package com.aula.projeto.view.controller;
 
 import com.aula.projeto.dtos.ProdutoDTO;
 import com.aula.projeto.model.ProdutoModel;
@@ -20,11 +20,11 @@ public class ProdutoController {
         this.produtoService = produtoService;
     }
 
-    @PostMapping
+   /* @PostMapping
     public ResponseEntity<Object> salvaProduto(@RequestBody ProdutoDTO produtoDTO){
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(produtoService.salvarProduto(produtoDTO));
-    }
+    }*/
 
     @GetMapping
     public ResponseEntity<List<ProdutoDTO>> ObterTodosOsProdutos(){
@@ -34,12 +34,12 @@ public class ProdutoController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Object> obterProdutoPorId(@PathVariable(value = "id") Integer id){
-        Optional<ProdutoDTO> ProdutoDtoOptional = produtoService.obterProdutoPorId(id);
-        if(!ProdutoDtoOptional.isPresent()){
-            return  ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado!");
-        }
-        return ResponseEntity.status(OK).body(ProdutoDtoOptional.get());
+
+
+        return ResponseEntity.status(OK).body(produtoService.obterProdutoPorId(id));
     }
+/*
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> deletarProduto(@PathVariable(value = "id") Integer id){
@@ -62,6 +62,8 @@ public class ProdutoController {
         produtoModel.setId(produtoModelOptional.get().getId());
         return ResponseEntity.status(HttpStatus.OK).body(produtoService.salvarProduto(produtoModel));
     }
+
+ */
 
 }
 

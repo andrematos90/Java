@@ -3,7 +3,11 @@ package com.aula.projeto.service;
 import com.aula.projeto.dtos.ProdutoDTO;
 import com.aula.projeto.model.ProdutoModel;
 import com.aula.projeto.repository.ProdutoRepository;
+import org.apache.velocity.exception.ResourceNotFoundException;
 import org.modelmapper.ModelMapper;
+import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,27 +23,39 @@ public class ProdutoService {
     }
 
     public List<ProdutoDTO> ObterTodosOsProdutos(){
-        List<ProdutoDTO> produtoDTO = produtoRepository.findAll();
+      List<ProdutoModel> produtoModel = produtoRepository.findAll();
 
-        return produtoModels.stream()
-                .map(produto -> new ModelMapper().map(produtoModels, ProdutoDTO.class))
+        return produtoModel.stream()
+                .map(produto -> new ModelMapper().map(produtoModel, ProdutoDTO.class))
                 .collect(Collectors.toList());
-    }
-    @Transactional
-    public ProdutoDTO salvarProduto(ProdutoModel produtoModel){
-        return produtoRepository.save(produtoModel);
     }
 
     public Optional<ProdutoDTO> obterProdutoPorId(Integer id) {
         Optional<ProdutoModel> produtoModel = produtoRepository.findById(id);
+       /*if(produtoModel.isPresent()){
+           throw new ResourceNotFoundException("Id do produto não encontrado!");
+        }*/
         ProdutoDTO produtoDTO = new ModelMapper().map(produtoModel.get(), ProdutoDTO.class);
         return Optional.of(produtoDTO);
     }
 
-    @jakarta.transaction.Transactional
-    public void deletarProduto(ProdutoModel produtoModel) {
-        produtoRepository.delete(produtoModel);
+   /* @Transactional
+    public ProdutoDTO salvarProduto(ProdutoDTO produtoDTO){
+        produtoDTO.setId(nuull);
+
+        return produtoRepository.save(produtoDTO);
     }
 
+
+
+    @jakarta.transaction.Transactional
+    public void deletarProduto(ProdutoDTO produtoDTO) {
+        produtoRepository.delete(produtoDTO);
+    }
+
+    public ProdutoDTO atualizarProduto(Integer id, ProdutoDTO produtoDTO){
+        produto.setId(id);
+        return produtoRepository.save(produtoDTO);
+    }*/
 
 }
