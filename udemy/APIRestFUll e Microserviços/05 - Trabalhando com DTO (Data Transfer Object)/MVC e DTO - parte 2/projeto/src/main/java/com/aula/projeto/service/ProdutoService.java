@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.DeleteMapping;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,23 +19,28 @@ import java.util.stream.Collectors;
 @Service
 public class ProdutoService {
     final ProdutoRepository produtoRepository;
-    public ProdutoService(ProdutoRepository produtoRepository){
+
+    public ProdutoService(ProdutoRepository produtoRepository) {
         this.produtoRepository = produtoRepository;
     }
 
-    public List<ProdutoDTO> ObterTodosOsProdutos(){
-      List<ProdutoModel> produtoModel = produtoRepository.findAll();
+    public List<ProdutoDTO> ObterTodosOsProdutos() {
+        //retorna uma lista de produto model
+        List<ProdutoModel> produtoModel = produtoRepository.findAll();
 
         return produtoModel.stream()
-                .map(produto -> new ModelMapper().map(produtoModel, ProdutoDTO.class))
+                .map(produto -> new ModelMapper().map(produto, ProdutoDTO.class))
                 .collect(Collectors.toList());
     }
 
     public Optional<ProdutoDTO> obterProdutoPorId(Integer id) {
+        //obtendo optional de produto pelo id
         Optional<ProdutoModel> produtoModel = produtoRepository.findById(id);
        /*if(produtoModel.isPresent()){
            throw new ResourceNotFoundException("Id do produto não encontrado!");
         }*/
+
+        //convertendo o optional de produto em produtoDTO
         ProdutoDTO produtoDTO = new ModelMapper().map(produtoModel.get(), ProdutoDTO.class);
         return Optional.of(produtoDTO);
 
@@ -42,7 +48,7 @@ public class ProdutoService {
     }
 
     @Transactional
-    public ProdutoDTO salvarProduto(ProdutoDTO produtoDTO){
+    public ProdutoDTO salvarProduto(ProdutoDTO produtoDTO) {
         //remove o id para conseguir fazer o cadastro
         produtoDTO.setId(null);
 
@@ -61,18 +67,35 @@ public class ProdutoService {
         return produtoDTO;
     }
 
-   /*
+    public ProdutoDTO atualizarProduto(Integer id, ProdutoDTO produtoDTO) {
+        //passa o id para o produtoDTO
+        produtoDTO.setId(id);
 
+        //cria um objeto de mapeamento
+        ModelMapper mapper = new ModelMapper();
 
+        //converte o produtoDTO em produtoModel
+        ProdutoModel produtoModel = mapper.map(produtoDTO, ProdutoModel.class);
 
-    @jakarta.transaction.Transactional
-    public void deletarProduto(ProdutoDTO produtoDTO) {
-        produtoRepository.delete(produtoDTO);
+        //atualiza o produto no banco de dados
+        produtoRepository.save(produtoModel);
+        return produtoDTO;
     }
 
-    public ProdutoDTO atualizarProduto(Integer id, ProdutoDTO produtoDTO){
-        produto.setId(id);
-        return produtoRepository.save(produtoDTO);
-    }*/
 
+    @DeleteMapping
+    public void deletarProduto(Integer id) {
+
+        //verifica se o produto existe
+        Optional<ProdutoModel> produtoModel = produtoRepository.findById(id);
+
+        //se não existir lança uma exception
+       /* if(produtoModel.isEmpty()){
+            throw new ResourceNotFoundException("id Não encontrado");
+        }*/
+        produtoRepository.deleteById(id);
+    }
 }
+
+
+
