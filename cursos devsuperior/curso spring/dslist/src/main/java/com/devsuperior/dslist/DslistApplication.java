@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
-@EntityScan("entities")
+@EntityScan("entities") // escaneia o pacote entities para criar a tabela
 @SpringBootApplication
 public class DslistApplication {
 

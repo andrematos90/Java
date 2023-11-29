@@ -5,12 +5,13 @@ import jakarta.persistence.*;
 
 import java.util.Objects;
 
-@Entity
-@Table(name = "tb_games")
+@Entity // configura a classe como a entidade do banco
+@Table(name = "tb_games") //define o nome da tabela
 public class Games {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //PROPRIEDADES
+    @Id // define o campo com um id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // gera os ids automaticamente
     private Long id;
     private String title;
 
@@ -21,15 +22,17 @@ public class Games {
     private Double score;
     private String imgUrl;
 
-    @Column(columnDefinition = "TEXT")
+    @Column(columnDefinition = "TEXT") // gera o campo como se fosse um texto
     private String shortDescription;
 
     @Column(columnDefinition = "TEXT")
     private String longDescription;
 
+    //MÉTODO CONSTRUTOR SEM PARAMETROS DE ENTRADA
     public Games() {
     }
 
+    //MÉTODO CONSTRUTOR COM PARAMETROS DE ENTRADA
     public Games(Long id, String title, Integer year, String genre, String platforms, Double score, String imgUrl,
                 String shortDescription, String longDescription) {
         this.id = id;
@@ -43,6 +46,7 @@ public class Games {
         this.longDescription = longDescription;
     }
 
+    //MÉTODOS GETTERS E SETTERS
     public Long getId() {
         return id;
     }
@@ -115,6 +119,7 @@ public class Games {
         this.longDescription = longDescription;
     }
 
+    //MÉTODOS HASCODE E EQUALS PARA COMPARAR DOIS GAMES PELO ID
     @Override
     public int hashCode() {
         return Objects.hash(id);
