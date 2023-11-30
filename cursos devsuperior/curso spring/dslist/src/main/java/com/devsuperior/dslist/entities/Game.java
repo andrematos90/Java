@@ -1,4 +1,4 @@
-package entities;
+package com.devsuperior.dslist.entities;
 
 
 import jakarta.persistence.*;
@@ -7,7 +7,7 @@ import java.util.Objects;
 
 @Entity // configura a classe como a entidade do banco
 @Table(name = "tb_games") //define o nome da tabela
-public class Games {
+public class Game {
 
     //PROPRIEDADES
     @Id // define o campo com um id
@@ -29,11 +29,11 @@ public class Games {
     private String longDescription;
 
     //MÉTODO CONSTRUTOR SEM PARAMETROS DE ENTRADA
-    public Games() {
+    public Game() {
     }
 
     //MÉTODO CONSTRUTOR COM PARAMETROS DE ENTRADA
-    public Games(Long id, String title, Integer year, String genre, String platforms, Double score, String imgUrl,
+    public Game(Long id, String title, Integer year, String genre, String platforms, Double score, String imgUrl,
                 String shortDescription, String longDescription) {
         this.id = id;
         this.title = title;
@@ -133,7 +133,7 @@ public class Games {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Games other = (Games) obj;
+        Game other = (Game) obj;
         return Objects.equals(id, other.id);
     }
 }

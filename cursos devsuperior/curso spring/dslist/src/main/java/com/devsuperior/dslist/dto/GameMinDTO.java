@@ -1,7 +1,6 @@
-package dto;
+package com.devsuperior.dslist.dto;
 
-import entities.Games;
-import jakarta.persistence.Column;
+import com.devsuperior.dslist.entities.Game;
 
 public class GameMinDTO {
 
@@ -15,7 +14,7 @@ public class GameMinDTO {
     public GameMinDTO() {}
 
     //intancia um objeto dto copiando os dados da classe Game
-    public GameMinDTO(Games entity) {
+    public GameMinDTO(Game entity) {
         this.id = entity.getId(); // id de Game é salvo no id de GameMinDto
         title = entity.getTitle(); // o uso do this nao é necessasrio pois nao possuia ambiguidade no nomes
         year = entity.getYear();

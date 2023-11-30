@@ -1,11 +1,11 @@
-package repositories;
+package com.devsuperior.dslist.repositories;
 
-import entities.Games;
+import com.devsuperior.dslist.entities.Game;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface GameRepository extends JpaRepository<Games, Long> {
+public interface GameRepository extends JpaRepository<Game, Long> {
 }
 
 //JpaRepository<Games, Long>  tipo da entidade e tipo do id
