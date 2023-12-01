@@ -1,6 +1,8 @@
 package com.devsuperior.dslist.dto;
 
 import com.devsuperior.dslist.entities.Game;
+import com.devsuperior.dslist.projections.GameMinProjection;
+import org.springframework.beans.BeanUtils;
 
 public class GameMinDTO {
 
@@ -20,6 +22,11 @@ public class GameMinDTO {
         year = entity.getYear();
         imgUrl = entity.getImgUrl();
         this.shortDescription = entity.getShortDescription();
+    }
+
+    //copoas os dados como no método contrutor acima mas o paramtro recebido é GameMinProjection
+    public GameMinDTO(GameMinProjection projection) {
+        BeanUtils.copyProperties(projection, this);
     }
 
     //apenas os métodos getters sao necessarios no dto

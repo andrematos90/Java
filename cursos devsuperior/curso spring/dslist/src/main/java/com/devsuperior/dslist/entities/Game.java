@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 import java.util.Objects;
 
 @Entity // configura a classe como a entidade do banco
-@Table(name = "tb_games") //define o nome da tabela
+@Table(name = "tb_game") //define o nome da tabela
 public class Game {
 
     //PROPRIEDADES
