@@ -1,0 +1,7 @@
+Em Spring Boot, "starters" são conjuntos de dependências predefinidas que facilitam o processo de configuração e desenvolvimento de aplicativos. Eles são pacotes de dependências Maven ou Gradle que incluem todas as bibliotecas e configurações necessárias para um determinado tipo de aplicativo. Os starters simplificam a inicialização de projetos Spring, reduzindo a quantidade de configuração manual necessária.
+
+Cada starter é projetado para um caso de uso específico, como desenvolvimento web, acesso a bancos de dados, segurança, etc. Ao incluir um starter em seu projeto Spring Boot, você traz automaticamente todas as dependências necessárias para começar a trabalhar com esse caso de uso específico.
+
+Por exemplo, se você estiver criando um aplicativo da web, pode incluir o starter spring-boot-starter-web, que traz consigo todas as dependências e configurações necessárias para desenvolvimento web com Spring Boot. Se precisar de acesso a um banco de dados, você pode adicionar o starter correspondente, como spring-boot-starter-data-jpa para acesso a dados usando JPA.
+
+Os starters são uma abordagem eficiente para iniciar rapidamente o desenvolvimento em projetos Spring Boot, pois eles ajudam a gerenciar dependências e configurações, permitindo que você se concentre mais na lógica do seu aplicativo.
