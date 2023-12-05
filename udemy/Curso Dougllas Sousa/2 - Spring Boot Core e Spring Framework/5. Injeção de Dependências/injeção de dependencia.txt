@@ -1,0 +1,64 @@
+A injeção de dependência (DI - Dependency Injection) é um padrão de design amplamente utilizado, e no contexto do Spring, é uma característica fundamental que facilita o desenvolvimento de aplicações flexíveis, modularizadas e de fácil manutenção. Vamos entender o conceito de injeção de dependência e como ela é implementada no Spring.
+
+Definição de Injeção de Dependência:
+A injeção de dependência é um padrão no qual as dependências de um objeto são fornecidas a ele em vez de serem criadas internamente. Em outras palavras, em vez de um objeto criar suas próprias dependências, elas são "injetadas" no objeto a partir do exterior. Isso promove um baixo acoplamento entre os componentes da aplicação, tornando-os mais reutilizáveis e fáceis de testar.
+
+Como Funciona no Spring:
+No Spring, a injeção de dependência é realizada pelo contêiner IoC do framework. O contêiner gerencia a criação e configuração de objetos (beans) e resolve automaticamente as dependências entre eles. Existem várias maneiras de realizar a injeção de dependência no Spring:
+
+Injeção via Construtor:
+
+A forma mais comum no Spring é a injeção de dependência via construtor. Você define um construtor em sua classe que aceita as dependências como parâmetros, e o Spring automaticamente fornece as instâncias apropriadas.
+java
+Copy code
+public class Cliente {
+    private Servico servico;
+
+    // Injeção via construtor
+    public Cliente(Servico servico) {
+        this.servico = servico;
+    }
+
+    // Métodos usando o serviço
+    public void realizarOperacao() {
+        servico.operacao();
+    }
+}
+Injeção via Métodos Setters:
+
+Além do construtor, o Spring suporta a injeção de dependência por meio de métodos setters. Esses métodos são chamados pelo contêiner após a criação do objeto, permitindo a definição das dependências.
+java
+Copy code
+public class Cliente {
+    private Servico servico;
+
+    // Injeção via método setter
+    public void setServico(Servico servico) {
+        this.servico = servico;
+    }
+
+    // Métodos usando o serviço
+    public void realizarOperacao() {
+        servico.operacao();
+    }
+}
+Injeção via Anotações:
+
+O Spring também suporta a injeção de dependência por meio de anotações, como @Autowired e @Inject. Essas anotações podem ser aplicadas a construtores, métodos setters ou diretamente a campos.
+java
+Copy code
+public class Cliente {
+    @Autowired
+    private Servico servico;
+
+    // Métodos usando o serviço
+    public void realizarOperacao() {
+        servico.operacao();
+    }
+}
+O contêiner IoC do Spring é responsável por entender essas anotações, resolver as dependências e fornecer as instâncias apropriadas durante a execução da aplicação. Essa abordagem facilita a construção de sistemas modulares e promove a reutilização de código.
+
+
+
+
+
