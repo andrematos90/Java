@@ -1,0 +1,4 @@
+No uso do banco de dados em memória é necessario
+a cada vez que rodar a aplicação é necessario criar o script de criação do banco no h2. Para evitar isso com o arquivo "data.sql"
+esse script criará o banco automaticamente a rodar a aplicação
+
