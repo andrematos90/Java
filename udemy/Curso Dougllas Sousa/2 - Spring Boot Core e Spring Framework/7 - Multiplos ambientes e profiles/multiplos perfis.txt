@@ -1,0 +1,72 @@
+No Spring Boot, você pode criar e gerenciar múltiplos perfis para ambientes diferentes, como desenvolvimento, teste e produção. Isso é útil para personalizar a configuração da aplicação para cada ambiente específico. Aqui estão os passos para criar e utilizar múltiplos perfis:
+
+1. Criar arquivos de configuração por perfil:
+Crie arquivos application-{profile}.properties ou application-{profile}.yml para cada perfil desejado. Por exemplo, application-dev.properties para desenvolvimento e application-test.properties para testes.
+
+application-dev.properties
+
+# Configurações específicas para o perfil de desenvolvimento
+server.port=8081
+logging.level.root=DEBUG
+
+
+
+application-test.properties
+
+# Configurações específicas para o perfil de testes
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.datasource.driver-class-name=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=password
+
+2. Ativar o perfil desejado:
+Existem várias maneiras de ativar um perfil no Spring Boot:
+
+a. Por propriedade no arquivo application.properties:
+Adicione a propriedade spring.profiles.active ao seu arquivo application.properties e defina o perfil desejado:
+
+spring.profiles.active=dev
+
+
+b. Por argumento de linha de comando:
+Ao iniciar a aplicação, você pode especificar o perfil desejado como um argumento de linha de comando:
+
+java -jar minha-aplicacao.jar --spring.profiles.active=dev
+
+
+3. Configuração adicional (opcional):
+Você pode adicionar configurações específicas para um perfil diretamente no arquivo application.properties ou application.yml. Essas configurações serão aplicadas a todos os perfis, mas você pode anulá-las ou substituí-las em arquivos específicos de perfil.
+
+Por exemplo, você pode ter configurações padrão no application.properties e substituí-las no application-dev.properties apenas para o perfil de desenvolvimento.
+
+4. Utilizando em código:
+No código-fonte, você pode injetar valores de propriedades usando a anotação @Value ou configurar classes específicas para cada perfil.
+
+Exemplo com @Value:
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Component
+public class MyComponent {
+
+    @Value("${server.port}")
+    private int serverPort;
+
+    // Restante do código...
+}
+Exemplo com classes de configuração:
+
+
+@Configuration
+@Profile("dev")
+public class DevConfig {
+    // Configurações específicas para o perfil de desenvolvimento
+}
+
+@Configuration
+@Profile("test")
+public class TestConfig {
+    // Configurações específicas para o perfil de testes
+}
+Essas são as etapas básicas para criar e usar múltiplos perfis no Spring Boot. Personalize conforme necessário para atender aos requisitos específicos do seu projeto.
