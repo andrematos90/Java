@@ -1,0 +1,77 @@
+O arquivo application.properties é um arquivo de configuração usado em projetos Spring Boot para configurar diversas propriedades da aplicação. Ele é uma parte essencial do ambiente de configuração do Spring Boot e fornece uma maneira fácil de definir configurações para sua aplicação.
+
+Aqui estão alguns pontos-chave sobre o application.properties no contexto do Spring Boot:
+
+Localização padrão:
+
+O arquivo application.properties geralmente é colocado no diretório src/main/resources do seu projeto Spring Boot. Essa é a localização padrão reconhecida pelo Spring Boot.
+
+Formato de propriedades:
+
+As configurações no arquivo são geralmente definidas no formato de chave-valor, como chave=valor. Por exemplo, spring.datasource.url=jdbc:mysql://localhost:3306/meubanco.
+
+Propriedades comuns:
+
+O arquivo application.properties é frequentemente utilizado para configurar propriedades comuns, como configurações do banco de dados, porta do servidor, configurações de log, etc.
+
+# Configurações do banco de dados
+spring.datasource.url=jdbc:mysql://localhost:3306/meubanco
+spring.datasource.username=usuario
+spring.datasource.password=senha
+
+# Configurações do servidor
+server.port=8080
+
+# Configurações de log
+logging.level.root=INFO
+
+Sobrescrevendo propriedades:
+
+As configurações no arquivo application.properties podem ser sobrescritas por meio de várias formas, como variáveis de ambiente, argumentos de linha de comando ou outros arquivos de propriedades. Isso proporciona flexibilidade para modificar o comportamento da aplicação sem a necessidade de modificar o código-fonte.
+
+Alternativa YAML:
+
+Além do formato de propriedades, o Spring Boot também suporta o uso de arquivos YAML (application.yml). O YAML é um formato mais legível por humanos que permite estruturar as configurações de forma hierárquica.
+Exemplo de equivalência entre application.properties e application.yml:
+
+# application.yml
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/meubanco
+    username: usuario
+    password: senha
+
+server:
+  port: 8080
+
+logging:
+  level:
+    root: INFO
+    
+Documentação:
+
+O arquivo application.properties é bem documentado, e você pode encontrar informações detalhadas sobre várias propriedades e suas opções na documentação oficial do Spring Boot.
+Lembre-se de que o application.properties é apenas uma das formas de configurar uma aplicação Spring Boot. Dependendo das necessidades específicas do projeto, você pode optar por outros métodos de configuração, como o uso de perfis (application-{profile}.properties ou application-{profile}.yml).
+
+
+DEFININDO NOME DA APLICAÇÃO PELO APPLICATION.properties
+ao invés do uso de bean
+
+*no arquivo application.properties:
+
+application.name = "Sistema de Vendas"
+
+
+*eliminar o bean na classe MyConfiguration
+
+*em "VendasApplication" tirar a injeção de dependencia do bean 
+
+*colocar: 
+
+@Value("${application.name}")
+	private String applicationName;
+
+
+
+configurações que podem ser feitas:
+https://docs.spring.io/spring-boot/docs/current/reference/html/application-properties.html
