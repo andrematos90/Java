@@ -1,0 +1,119 @@
+1 - Criar classe do tipo "Annotation"
+
+
+2 - Annotar a classe com:
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+@Configuration
+@Profile("dev")
+@Profile("nomedoperfilcriadonapastaresorces")
+
+
+3 - Na classe MyConfiguration  usar a annotation criada:
+
+ @Devlopment
+public class MyConfiguration {
+    @Bean
+    public CommandLineRunner executar(){
+        return  args ->{
+            System.out.println("Rodando configuração" +
+                    "de desenvolvimento");
+        };
+    }
+}
+
+
+outro exemplo:
+
+No Spring Framework, você pode criar anotações personalizadas para simplificar a configuração e uso de componentes específicos em seus aplicativos. Vamos criar um exemplo simples de uma anotação personalizada de configuração. Neste exemplo, criaremos uma anotação chamada @DatabaseConfig que permitirá configurar facilmente as propriedades do banco de dados.
+
+Passo a passo para criar uma anotação personalizada de configuração:
+
+1. Defina a anotação:
+Crie uma anotação personalizada, como DatabaseConfig. Esta anotação pode ter elementos (parâmetros) que serão usados para configurar propriedades específicas.
+
+
+import org.springframework.context.annotation.Import;
+
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+@Import(DatabaseConfigRegistrar.class)
+public @interface DatabaseConfig {
+    String url() default "";
+    String username() default "";
+    String password() default "";
+}
+
+Neste exemplo, a anotação DatabaseConfig tem três elementos: url, username e password, que podem ser usados para configurar o acesso ao banco de dados.
+
+2. Crie uma classe de configuração personalizada:
+Crie uma classe que será responsável por configurar as propriedades do banco de dados com base nos valores fornecidos na anotação. Esta classe deve implementar a interface ImportBeanDefinitionRegistrar.
+
+
+import org.springframework.beans.factory.support.BeanDefinitionRegistry;
+import org.springframework.beans.factory.support.BeanDefinitionRegistryPostProcessor;
+import org.springframework.beans.factory.support.GenericBeanDefinition;
+import org.springframework.context.annotation.ImportBeanDefinitionRegistrar;
+import org.springframework.core.type.AnnotationMetadata;
+
+public class DatabaseConfigRegistrar implements ImportBeanDefinitionRegistrar {
+
+    @Override
+    public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry) {
+        // Obtenha os valores da anotação
+        String url = (String) importingClassMetadata.getAnnotationAttributes(DatabaseConfig.class.getName()).get("url");
+        String username = (String) importingClassMetadata.getAnnotationAttributes(DatabaseConfig.class.getName()).get("username");
+        String password = (String) importingClassMetadata.getAnnotationAttributes(DatabaseConfig.class.getName()).get("password");
+
+        // Crie um bean para a configuração do banco de dados
+        GenericBeanDefinition beanDefinition = new GenericBeanDefinition();
+        beanDefinition.setBeanClass(DatabaseConfigProperties.class);
+        beanDefinition.getPropertyValues().add("url", url);
+        beanDefinition.getPropertyValues().add("username", username);
+        beanDefinition.getPropertyValues().add("password", password);
+
+        // Registre o bean no contexto do Spring
+        registry.registerBeanDefinition("databaseConfigProperties", beanDefinition);
+    }
+}
+
+3. Crie uma classe para armazenar as propriedades do banco de dados:
+
+public class DatabaseConfigProperties {
+
+    private String url;
+    private String username;
+    private String password;
+
+    // Getters e setters...
+
+    @Override
+    public String toString() {
+        return "DatabaseConfigProperties{" +
+                "url='" + url + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
+}
+
+4. Use a anotação personalizada em sua aplicação:
+Agora, você pode usar a anotação @DatabaseConfig nas classes que precisam das configurações do banco de dados. Por exemplo:
+
+
+@DatabaseConfig(url = "jdbc:mysql://localhost:3306/mydb", username = "user", password = "pass")
+public class MyDatabaseService {
+
+    @Autowired
+    private DatabaseConfigProperties databaseConfigProperties;
+
+    // Restante do código...
+}
+Dessa forma, a configuração do banco de dados será injetada automaticamente na classe MyDatabaseService com base nos valores fornecidos na anotação @DatabaseConfig.
+
+Este é apenas um exemplo básico, e você pode estender essa abordagem para criar anotações personalizadas mais complexas, dependendo das necessidades específicas do seu projeto.
