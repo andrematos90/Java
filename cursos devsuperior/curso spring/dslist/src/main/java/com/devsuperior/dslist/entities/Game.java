@@ -1,6 +1,7 @@
 package com.devsuperior.dslist.entities;
 
 import jakarta.persistence.*;
+import org.springframework.web.servlet.tags.form.TextareaTag;
 
 import java.util.Objects;
 
@@ -24,7 +25,12 @@ import java.util.Objects;
         private String platforms;
         private Double score;
         private String imgUrl;
+        //para que a JPA gere o campo como um texto pq nesse caso tem que ser marior que VARCHAR 255
+        @Column(columnDefinition = "TEXT")
         private String shortDescription;
+
+        //para que a JPA gere o campo como um texto pq nesse caso tem que ser marior que VARCHAR 255
+        @Column(columnDefinition = "TEXT")
         private String longDescription;
 
         public Game() {

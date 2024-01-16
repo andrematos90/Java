@@ -113,6 +113,8 @@ public class Game {
     private Double score;
     private String imgUrl;
     private String shortDescription;
+ //para que a JPA gere o campo como um texto pq nesse caso tem que ser marior que VARCHAR 255
+        @Column(columnDefinition = "TEXT")
     private String longDescription;
 
     public Game() {
@@ -220,6 +222,11 @@ public class Game {
 *rodar o projeto, ver se cria a tabela
 *acessar, e connect e run
 
+
+-----------------------------------------------------------------------------------
+- Fazer seed dos games (povoar banco de dados)
+
+*em resource criar o arquivo "import.sql"
 
 
 
