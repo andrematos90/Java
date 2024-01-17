@@ -318,27 +318,68 @@ public interface GameRepository  extends JpaRepository<Game, Long> {
 
 
 
+-------------------------------------------------------------------------------------------------
+
+- Criar Service (onde fica a lógica de negócio)
+
+
+ * em java/com.devsuperior.dslist criar o pacote "services" com a classe "GameService"
+
+package com.devsuperior.dslist.services;
+
+import com.devsuperior.dslist.dto.GameMinDTO;
+import com.devsuperior.dslist.entities.Game;
+import com.devsuperior.dslist.repositories.GameRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service // registra como sendo um componente do sistema, permitindo a injeção dependencias
+public class GameService {
+    @Autowired
+    private GameRepository gameRepository;
+    public List<GameMinDTO> findAll(){
+        List <Game> result = gameRepository.findAll();
+        List<GameMinDTO> dto = result.stream().map(x -> new GameMinDTO(x)).toList();
+        return dto;
+
+    }
+}
 
 
 
+-----------------------------------------------------------------------------------------------
 
+- Criar Controller
 
+* em java/com.devsuperior.dslist criar o pacote "controllers" com a classe "GameController"
 
+package com.devsuperior.dslist.controllers;
 
+import com.devsuperior.dslist.dto.GameMinDTO;
+import com.devsuperior.dslist.entities.Game;
+import com.devsuperior.dslist.services.GameService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 
+@RestController
+@RequestMapping(value = "/games")
+public class GameController {
+    @Autowired
+    private GameService gameService;
 
+    @GetMapping
+    public List<GameMinDTO>findAll(){
+        List<GameMinDTO> result = gameService.findAll();
+        return result;
+    }
+}
 
-
-
-
-
-
-
-
-
-
-Service e Controller
 
 
 
