@@ -1,0 +1,229 @@
+IMPLEMENTAR MODELO DE DOMINIO
+
+* criar a classe GameList em com/devsuperior/dslist/entities
+
+
+
+
+package com.devsuperior.dslist.entities;
+
+import jakarta.persistence.*;
+
+import java.util.Objects;
+
+
+@Entity
+@Table(name="tb_gameList")
+public class GameList {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+    private  String name;
+
+    public GameList() {
+
+    }
+
+    public GameList(long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
+
+    //comparam por id se um gamelist é igual a outro
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof GameList gameList)) return false;
+        return getId() == gameList.getId();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
+    }
+}
+
+
+
+-------------------------------------------------------------------------------------------
+
+- em com/devsuperior/dslist/entities  criar classe auxiliar "BelongingPK" que faz referencias do relacionamento das entidades de Game e GameList é como se ela fizesse a união das duas classes e criasse uma chave primaria que representaria as duas 
+
+
+package com.devsuperior.dslist.entities;
+
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+
+import java.util.Objects;
+
+@Embeddable
+public class BelongingPk {
+
+    @ManyToOne
+    @JoinColumn(name = "game_id") // Especifica o nome da coluna de junção
+    private Game game;
+
+    @ManyToOne
+    @JoinColumn(name = "list_id") // Especifica o nome da coluna de junção
+    private GameList list;
+
+    public BelongingPk() {
+
+    }
+
+    public BelongingPk(Game game, GameList list) {
+        this.game = game;
+        this.list = list;
+    }
+
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
+    }
+
+    public GameList getList() {
+        return list;
+    }
+
+    public void setList(GameList list) {
+        this.list = list;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof BelongingPk that)) return false;
+        return Objects.equals(getGame(), that.getGame()) && Objects.equals(getList(), that.getList());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getGame(), getList());
+    }
+}
+
+
+/*OBS:
+@ManyToOne
+frequentemente utilizada em conjunto com outras anotações para representar
+um relacionamento muitos-para-um entre entidades.
+ é usada para mapear o relacionamento entre Game e GameList.
+  Isso indica que muitos games podem estar associados a uma unica lista de games
+  O atributo cliente representa a parte "muitos" do relacionamento.
+
+
+A anotação @JoinColumn em JPA é usada para especificar detalhes sobre a coluna
+
+de junção (join column) quando há um relacionamento entre entidades.
+Ela geralmente é usada em conjunto com anotações como @ManyToOne ou @OneToOne
+para personalizar como as colunas de junção devem ser mapeadas no banco de dados.
+
+@Embeddable
+é usada para marcar uma classe cujos objetos serão incorporados como componentes de outra entidade. Ela é frequentemente usada em conjunto com a anotação @EmbeddedId ou @Embedded.
+ */
+
+
+
+*criar a classe "Belonging"
+
+
+package com.devsuperior.dslist.entities;
+
+
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+import java.util.Objects;
+
+@Entity
+@Table(name = "tb_belonging")
+public class Belonging {
+
+
+    @EmbeddedId
+    private BelongingPk id  = new BelongingPk();
+    private Integer position;
+
+    public Belonging() {
+    }
+
+    public Belonging(Game game, GameList list, Integer position) {
+        id.setGame(game);
+        id.setList(list);
+        this.position = position;
+    }
+
+    public BelongingPk getId() {
+        return id;
+    }
+
+    public void setId(BelongingPk id) {
+        this.id = id;
+    }
+
+    public Integer getPosition() {
+        return position;
+    }
+
+    public void setPosition(Integer position) {
+        this.position = position;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Belonging belonging)) return false;
+        return Objects.equals(getId(), belonging.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
+    }
+}
+
+/*
+OBS:
+
+@EmbeddedId é utilizada em conjunto com JPA (Java Persistence API) para representar
+ uma chave primária incorporada em uma entidade. Quando uma entidade possui uma chave
+  primária composta por múltiplos campos, é possível encapsular esses campos em uma
+  classe auxiliar e marcá-la com @Embeddable. A classe que contém essa chave primária
+   composta utiliza @EmbeddedId para indicar que a chave está incorporada na própria
+    classe.
+ */
+
+
+
+
+
+
+
+
