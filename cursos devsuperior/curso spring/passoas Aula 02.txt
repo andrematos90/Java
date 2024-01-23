@@ -1,4 +1,4 @@
-IMPLEMENTAR MODELO DE DOMINIO
+- IMPLEMENTAR MODELO DE DOMINIO
 
 * criar a classe GameList em com/devsuperior/dslist/entities
 
@@ -68,7 +68,7 @@ public class GameList {
 
 -------------------------------------------------------------------------------------------
 
-- em com/devsuperior/dslist/entities  criar classe auxiliar "BelongingPK" que faz referencias do relacionamento das entidades de Game e GameList é como se ela fizesse a união das duas classes e criasse uma chave primaria que representaria as duas 
+- em com/devsuperior/dslist/entities  criar classe auxiliar "BelongingPK" que faz referencias do relacionamento das entidades de Game e GameList é como se ela fizesse a união das duas classes e criasse uma chave primaria que representaria as duas, pq no repository é aceito apenas um tipo de argmento no id 
 
 
 package com.devsuperior.dslist.entities;
