@@ -252,7 +252,7 @@ INSERT INTO tb_belonging (list_id, game_id, position) VALUES (2, 10, 4);
 terá um endpoint onde é passado o id do game que deve ser buscado na base
 
 
-*criar GameDTO terá todos os campos, pq será usado para preencher a tela aonde aparece 
+*criar GameDTO  em com/devsuperior/dslist/dto/GameDTO que  terá todos os campos, pq será usado para preencher a tela aonde aparece 
 todas as informações do game
 
 
@@ -441,6 +441,12 @@ public class GameService {
     e vinculá-la na variável "id"  que é passada como parametro do
     método
     */
+
+-----------------------------------------------------------------------------------------------------
+
+- BUSCA DE TODAS AS LISTAS
+
+
 
 
 
