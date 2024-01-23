@@ -648,6 +648,44 @@ public interface GameMinProjection {
 importar "GameMinProjection" no GameRepository
 
 
+-----------------------------------------------------------------------------
+
+ * Criar método findByList no GameService, é criado no GameService pq ele retorna um Game
+
+
+ @Transactional(readOnly = true)
+    public List<GameMinDTO> findByList(Long listId){
+        List <GameMinProjection> result = gameRepository.searchByList(listId);
+        return  result.stream().map(x -> new GameMinDTO(x)).toList();
+        
+
+    }
+
+
+
+criar construror no GameMinDTO:
+
+ public GameMinDTO(GameMinProjection projection) {
+        id = projection.getId();
+        title = projection.getTitle();
+        year = projection.getYear();
+        imgUrl = projection.getImgUrl();
+        shortDescription = projection.getShortDescription();
+    }
+
+----------------------------------------------------------------------------------
+
+* Criar método no controller de GameListController pq o endpoint é de lists
+
+ @GetMapping(value = "/{listId}/games")
+    public List<GameMinDTO>findByList(@PathVariable Long listId){
+        List<GameMinDTO> result = gameService.findByList(listId);
+        return result;
+    }
+
+    //è necessario injectar GameService para se usar os métodos
+
+
 
 
 
