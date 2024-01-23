@@ -445,13 +445,140 @@ public class GameService {
 -----------------------------------------------------------------------------------------------------
 
 - BUSCA DE TODAS AS LISTAS
+criar GameListDTO,criar repository, criar método no service, e controller
 
 
 
 
+*criar GameListDTO em com/devsuperior/dslist/dto
+
+
+package com.devsuperior.dslist.dto;
+
+import com.devsuperior.dslist.entities.GameList;
+import org.springframework.beans.BeanUtils;
+
+public class GameListDTO {
+
+    private long id;
+    private  String name;
+
+    public GameListDTO() {
+    }
+
+    public GameListDTO(GameList entity) {
+        BeanUtils.copyProperties(entity, this);
+
+        /*
+         usar o BeanUtils.copyProperties() ou :
+
+         id = entity.getId();
+         name = entity.getName();
+
+         */
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+}
 
 
 
+---------------------------------------------------------------------------------------------
+
+*criar GameListRepository em com/devsuperior/dslist/repositories/GameListRepository.java
+
+
+package com.devsuperior.dslist.repositories;
+
+import com.devsuperior.dslist.entities.Game;
+import com.devsuperior.dslist.entities.GameList;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface GameListRepository extends JpaRepository<GameList, Long> {
+}
+
+//è passado o nome da entidade e o tipo do id
+
+
+----------------------------------------------------------------------------------------------
+
+*criar Service
+
+
+package com.devsuperior.dslist.services;
+
+import com.devsuperior.dslist.dto.GameListDTO;
+import com.devsuperior.dslist.dto.GameMinDTO;
+import com.devsuperior.dslist.entities.Game;
+import com.devsuperior.dslist.entities.GameList;
+import com.devsuperior.dslist.repositories.GameListRepository;
+import com.devsuperior.dslist.repositories.GameRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class GameListService {
+
+    @Autowired
+    private GameListRepository gameRepository;
+
+    public List<GameListDTO> findAll(){
+        List <GameList> result = gameRepository.findAll();
+        List<GameListDTO> dto = result.stream().map(x -> new GameListDTO(x)).toList();
+        return dto;
+
+    }
+
+
+
+
+}
+
+
+-------------------------------------------------------------------------------------------
+
+* Criar controller 
+
+
+package com.devsuperior.dslist.controllers;
+
+import com.devsuperior.dslist.dto.GameListDTO;
+import com.devsuperior.dslist.services.GameListService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+@RestController
+@RequestMapping(value = "/gameList")
+public class GameListController {
+    @Autowired
+    private GameListService gameListService;
+
+    @GetMapping
+    public List<GameListDTO> findAll(){
+        List<GameListDTO> result = gameListService.findAll();
+        return result;
+    }
+}
 
 
 
