@@ -246,6 +246,202 @@ INSERT INTO tb_belonging (list_id, game_id, position) VALUES (2, 9, 3);
 INSERT INTO tb_belonging (list_id, game_id, position) VALUES (2, 10, 4);
 
 
+--------------------------------------------------------------------------------------------------
+
+- CRIAR GameDTO E BUSCA DE GAME POR ID
+terá um endpoint onde é passado o id do game que deve ser buscado na base
+
+
+*criar GameDTO terá todos os campos, pq será usado para preencher a tela aonde aparece 
+todas as informações do game
+
+
+package com.devsuperior.dslist.dto;
+
+import com.devsuperior.dslist.entities.Game;
+import jakarta.persistence.Column;
+import org.springframework.beans.BeanUtils;
+
+import java.util.Objects;
+
+public class GameDTO {
+
+    private Long id;
+    private String title;
+    private Integer year;
+    private String genre;
+    private String platforms;
+    private Double score;
+    private String imgUrl;
+    private String shortDescription;
+    private String longDescription;
+
+    public GameDTO() {
+    }
+
+    public GameDTO(Game entity) {
+       /* this.id = id;
+        this.title = title;
+        this.year = year;
+        this.genre = genre;
+        this.platforms = platforms;
+        this.score = score;
+        this.imgUrl = imgUrl;
+        this.shortDescription = shortDescription;
+        this.longDescription = longDescription;
+
+        ou pode se fazer como no código abaixo
+        onde é criada uma copia das propriedades da entidade do tipo "Game"
+        para o GameDTO que é o "this" isso serve quando o DTO tera as mesmas
+        propriedades de Game
+        Obs: para funcionar também deve se ter os métodos getters e setters
+
+        */
+
+        BeanUtils.copyProperties(entity, this);
+
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Integer getYear() {
+        return year;
+    }
+
+    public void setYear(Integer year) {
+        this.year = year;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public String getPlatforms() {
+        return platforms;
+    }
+
+    public void setPlatforms(String platforms) {
+        this.platforms = platforms;
+    }
+
+    public Double getScore() {
+        return score;
+    }
+
+    public void setScore(Double score) {
+        this.score = score;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
+    public String getShortDescription() {
+        return shortDescription;
+    }
+
+    public void setShortDescription(String shortDescription) {
+        this.shortDescription = shortDescription;
+    }
+
+    public String getLongDescription() {
+        return longDescription;
+    }
+
+    public void setLongDescription(String longDescription) {
+        this.longDescription = longDescription;
+    }
+
+
+}
+
+
+---------------------------------------------------------------------------------------------------
+
+- NO SERVIE CRIAR MÉTODO PARA BUSCAR POR ID
+
+
+package com.devsuperior.dslist.services;
+
+import com.devsuperior.dslist.dto.GameDTO;
+import com.devsuperior.dslist.dto.GameMinDTO;
+import com.devsuperior.dslist.entities.Game;
+import com.devsuperior.dslist.repositories.GameRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+@Service // registra como sendo um componente do sistema, permitindo a injeção dependencias
+public class GameService {
+    @Autowired
+    private GameRepository gameRepository;
+    public List<GameMinDTO> findAll(){
+        List <Game> result = gameRepository.findAll();
+        List<GameMinDTO> dto = result.stream().map(x -> new GameMinDTO(x)).toList();
+        return dto;
+
+    }
+
+    @Transactional(readOnly = true) // é utilizada para indicar que um método deve ser envolvido por uma transação
+    public GameDTO findById(Long id){
+        Game result = gameRepository.findById(id).get();
+        GameDTO dto = new GameDTO(result);
+        return dto;
+
+    }
+
+    /* o método retornará um GameDTO (que possui todas as propriedades do game),
+    findById(id); é o método do repository no qual é passado um id e ele retorna
+    um "optional" para extrarir o Game desse optional usa se o ".get() tudo é
+    salvo na variável result que é do tipo Game"
+
+     GameDTO dto = new GameDTO(result);
+     converte de Game para o tipo GameDto e salvo na variável dto que é retornada
+     */
+}
+
+
+--------------------------------------------------------------------------------------------------
+
+- CRIAR O MÉTODO QUE BUSCA POR ID NO CONTROLLER 
+
+    @GetMapping(value = "/{id}")
+    public GameDTO findById(@PathVariable Long id){
+        GameDTO result = gameService.findById(id);
+        return result;
+    }
+
+    /*
+    @PathVariable
+    extrai o valor que é passado no endpoint
+    e vinculá-la na variável "id"  que é passada como parametro do
+    método
+    */
+
 
 
 
