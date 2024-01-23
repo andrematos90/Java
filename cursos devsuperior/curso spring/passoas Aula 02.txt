@@ -79,15 +79,15 @@ import jakarta.persistence.ManyToOne;
 
 import java.util.Objects;
 
-@Embeddable
+@Embeddable //indica que "o tipo BelongingPk representará dois campos)
 public class BelongingPk {
 
     @ManyToOne
-    @JoinColumn(name = "game_id") // Especifica o nome da coluna de junção
+    @JoinColumn(name = "game_id") // Especifica o nome da coluna de junção (nome da chave estrangeira)
     private Game game;
 
     @ManyToOne
-    @JoinColumn(name = "list_id") // Especifica o nome da coluna de junção
+    @JoinColumn(name = "list_id") // Especifica o nome da coluna de junção (nome da chave estrangeira)
     private GameList list;
 
     public BelongingPk() {
@@ -219,6 +219,33 @@ OBS:
    composta utiliza @EmbeddedId para indicar que a chave está incorporada na própria
     classe.
  */
+
+
+
+-----------------------------------------------------------------------------------------------
+- ATUALIZAR SEED DA BASE DE DADOS
+
+*inserir lista de categorias na base dados em "import.sql" com os comandos:
+
+INSERT INTO tb_game_list (name) VALUES ('Aventura e RPG');
+INSERT INTO tb_game_list (name) VALUES ('Jogos de plataforma');
+
+
+*inserir associaões para falar qual jogo está em qual lista:
+
+INSERT INTO tb_belonging (list_id, game_id, position) VALUES (1, 1, 0);
+INSERT INTO tb_belonging (list_id, game_id, position) VALUES (1, 2, 1);
+INSERT INTO tb_belonging (list_id, game_id, position) VALUES (1, 3, 2);
+INSERT INTO tb_belonging (list_id, game_id, position) VALUES (1, 4, 3);
+INSERT INTO tb_belonging (list_id, game_id, position) VALUES (1, 5, 4);
+
+INSERT INTO tb_belonging (list_id, game_id, position) VALUES (2, 6, 0);
+INSERT INTO tb_belonging (list_id, game_id, position) VALUES (2, 7, 1);
+INSERT INTO tb_belonging (list_id, game_id, position) VALUES (2, 8, 2);
+INSERT INTO tb_belonging (list_id, game_id, position) VALUES (2, 9, 3);
+INSERT INTO tb_belonging (list_id, game_id, position) VALUES (2, 10, 4);
+
+
 
 
 
