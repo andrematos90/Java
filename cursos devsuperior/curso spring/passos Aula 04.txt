@@ -1,2 +1,115 @@
-continuaçao do projetoda aula 02..
+continuaçao do projeto da aula 02..
+
+- para mover um game na lista e alterar a ordem. Por exemplo trocar o game que esta na posição 4
+e colocar nao posição 1. Deve se exclui-lo primeiro, e depois adicionar novamente a lista passando 
+o indice que ao qual sera adicionado.Os outros itens da lista vao ser "empurrados" para baixo no exemplo
+
+
+Para se fazer isso usa-se uma lista em memória, no caso do java o "List"
+no Service de list Game cria se o método para se mover o game na lista, passando o id de qual 
+lista será alterada, o indice atual do game e o indice para qual ele vai
+
+
+ @Transactional(readOnly = true)
+    public void mov(Long listId, int sourceIndex, int destinationIndex) {
+        List<GameMinProjection> list = gameRepository.searchByList(listId);
+        GameMinProjection obj = list.remove(sourceIndex);
+        list.add(destinationIndex, obj);
+    }
+
+
+
+após é preciso salvar essas novas posições que estão na lista em memória no banco de dados, tabela "tb_belonging" atualizando o campo position dando o id da lista e do jogo atualiza o position
+
+no GameListRepository:
+
+
+@Modifying
+@Query(nativeQuery = true, value = "UPDATE tb_belonging SET position = :newPosition WHERE list_id = :listId AND game_id = :gameId")
+void updateBelongingPosition(Long listId, Long gameId, Integer newPosition);
+
+
+voltando ao service, todos itens da lista que estao acima e abaixo do sourceIndex e do destinationIndex
+não necessitam ser modificados.
+mas os itens que estao entre eles precisam, é precisao saber qual é o max e min
+
+
+        int min = sourceIndex < destinationIndex ? sourceIndex : destinationIndex;
+        int max = sourceIndex < destinationIndex ? destinationIndex : sourceInde
+
+para atualizar os itens do que estão entre o maximo e o minimo utiliza-se um for
+
+ for(int i = min; i > max; i++){
+            gameListRepository.updateBelongingPosition(listId, list.get(i).getId(), i);
+        }
+
+
+
+
+método finalizado no service:
+
+
+@Transactional()
+    public void mov(Long listId, int sourceIndex, int destinationIndex) {
+        List<GameMinProjection> list = gameRepository.searchByList(listId);
+        GameMinProjection obj = list.remove(sourceIndex);
+        list.add(destinationIndex, obj);
+
+        int min = sourceIndex < destinationIndex ? sourceIndex : destinationIndex;
+        int max = sourceIndex < destinationIndex ? destinationIndex : sourceIndex;
+
+        for(int i = min; i > max; i++){
+            gameListRepository.updateBelongingPosition(listId, list.get(i).getId(), i);
+        }
+    }
+
+
+
+como boas práticas de REST o endpoint é criado cum substantivo  "http://localhost:8080/lists/2/replacement"
+e não um verbo  e como a requisição é do tipo POST é passado um corpor "body"
+
+{ "sourceIndex": 3,
+  "destinationIndex": 1
+}
+
+
+para "capturar" esse objeto no java deve ser criado um DTO para ele "DestinationDTO"
+
+
+package com.devsuperior.dslist.dto;
+
+public class ReplacemetDTO {
+
+    private Integer sourceIndex;
+    private Integer destinationIndex;
+
+    public ReplacemetDTO() {
+    }
+
+    public Integer getSourceIndex() {
+        return sourceIndex;
+    }
+
+    public void setSourceIndex(Integer sourceIndex) {
+        this.sourceIndex = sourceIndex;
+    }
+
+    public Integer getDestinationIndex() {
+        return destinationIndex;
+    }
+
+    public void setDestinationIndex(Integer destinationIndex) {
+        this.destinationIndex = destinationIndex;
+    }
+}
+
+
+
+em GameListController
+
+@PostMapping(value = "/{listId}/games")
+    public void mov(@PathVariable Long listId, @RequestBody ReplacemetDTO body){
+        gameListService.mov(listId, body.getSourceIndex(), body.getDestinationIndex());
+    }
+
 
