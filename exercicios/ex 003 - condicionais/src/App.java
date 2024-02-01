@@ -6,7 +6,7 @@ Para voos internacionais:
 
 A classe Econômica possui 30 assentos, 5 estão disponiveis.
 A classe Executiva possui 20 assentos, 1 estão disponiveis.
-A Primeira Classe possui 10 assentos, 8 estão disponiveis.
+A Primeira Classe possui 10 assentos, 0 estão disponiveis.
 
 Para voos nacionais:
 
@@ -26,9 +26,68 @@ Considere também as seguintes restrições:
 Caso a classe selecionada não seja válida, informe ao usuário e peça uma nova seleção.
 Caso o tipo de voo selecionado não seja válido, informe ao usuário e peça uma nova seleção. */
 
+import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
+        
+        Internacional reservaInternacional = new Internacional();
+        Nacional reservaNacional = new Nacional();
+        Scanner scanner = new Scanner(System.in);
+
+
+        System.out.println("Digite o numero da opção do seu voo:");
+        System.out.println("1 -Internacional?");
+        System.out.println("2 -Nacional");
+        int opcaoVoo = Integer.parseInt(scanner.nextLine()); 
+
+        System.out.println("Digite o numero da opcao de assento: ");
+        System.out.println("1 - Economico");
+        System.out.println("2 - Executivo");
+        System.out.println("3 - Primeira Classe");
+        int opcaoAssento = Integer.parseInt(scanner.nextLine());
+
+        if(opcaoVoo == 1){
+            if(opcaoAssento == 1 && 
+            reservaInternacional.getAssentoEconomico() > 0 ){
+                System.out.println("Reserva realizada com sucesso!");
+            }
+            if(opcaoAssento == 2 &&
+            reservaInternacional.getAssentoExecutivo() > 0){
+                System.out.println("Reserva realizada com sucesso!");
+            }
+            if(opcaoAssento == 3 &&
+            reservaInternacional.getAssentoPrimeira() > 0){
+                System.out.println("Reserva realizada com sucesso!");
+            }
+            else{
+                System.out.println("Não há mais acentos disponiveis! Reserva não realizada!");
+            }
+            
+        }
+
+        if(opcaoVoo == 2){
+            if(opcaoAssento == 1 && 
+            reservaNacional.getAssentoEconomico() > 0 ){
+                System.out.println("Reserva realizada com sucesso!");
+            }
+            if(opcaoAssento == 2 &&
+            reservaNacional.getAssentoExecutivo() > 0){
+                System.out.println("Reserva realizada com sucesso!");
+            }
+            if(opcaoAssento == 3 &&
+            reservaNacional.getAssentoPrimeira() > 0){
+                System.out.println("Reserva realizada com sucesso!");
+            }
+            else{
+                System.out.println("Não há mais acentos disponiveis! Reserva não realizada!");
+            }
+        }
+
+      
+
+        scanner.close();
+
+    
     }
 }
