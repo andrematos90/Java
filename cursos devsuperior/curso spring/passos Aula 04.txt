@@ -58,7 +58,7 @@ método finalizado no service:
         int min = sourceIndex < destinationIndex ? sourceIndex : destinationIndex;
         int max = sourceIndex < destinationIndex ? destinationIndex : sourceIndex;
 
-        for(int i = min; i > max; i++){
+        for(int i = min; i <= max; i++){
             gameListRepository.updateBelongingPosition(listId, list.get(i).getId(), i);
         }
     }
@@ -113,3 +113,11 @@ em GameListController
     }
 
 
+
+
+consulta no h2 para verificar os games da lista
+
+SELECT TB_BELONGING  .*,  TB_GAME.TITLE FROM TB_BELONGING
+INNER JOIN TB_GAME ON TB_GAME.ID = TB_BELONGING.GAME_ID
+ WHERE LIST_ID = 2 
+ORDER BY POSITION
